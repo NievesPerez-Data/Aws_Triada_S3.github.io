@@ -1,8 +1,8 @@
 ---
 import { Picture } from "astro:assets";
-// Cambiamos 'heroImage' por 'logo' y apuntamos al archivo real
+// CAMBIO CLAVE: Usamos ../ para subir un nivel desde 'components' a 'src'
 import logo from "../assets/logo.png"; 
-import Link from "../components/ui/link.astro";
+import Link from "./ui/link.astro"; // 'ui' está dentro de 'components', así que es ./
 import { Icon } from "astro-icon/components";
 ---
 
