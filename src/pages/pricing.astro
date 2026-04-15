@@ -1,85 +1,82 @@
 ---
-import { Icon } from "astro-icon/components";
-import Link from "@/components/ui/link.astro";
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import Sectionhead from "../components/sectionhead.astro";
+import PricingCard from "../components/pricing.astro";
 
 const pricing = [
   {
     name: "Business Audit",
     price: "Custom",
-    description: "Análisis profundo de KPIs y detección de cuellos de botella en procesos operativos.",
+    popular: false,
     features: [
       "Auditoría de datos inicial",
       "Mapa de procesos operativos",
+      "Detección de cuellos de botella",
       "Identificación de puntos de fuga de ROI",
-      "Reporte de recomendaciones estratégicas",
+      "Reporte de recomendaciones",
+      "Presentación de hallazgos",
     ],
-    button: "Solicitar Auditoría",
+    button: {
+      text: "Solicitar Auditoría",
+      link: "/Aws_Triada_S3.github.io/contact",
+    },
   },
   {
     name: "Digital Growth",
     price: "Custom",
-    description: "Estrategia de diseño de producto y optimización de conversión basada en datos.",
-    features: [
-      "Rediseño UX/UI de embudos",
-      "Implementación de analítica avanzada",
-      "Estrategia de retención de clientes",
-      "Soporte en toma de decisiones",
-    ],
     popular: true,
-    button: "Hablar con Estrategia",
+    features: [
+      "Todo lo de Business Audit",
+      "Rediseño UX/UI de embudos",
+      "Implementación analítica avanzada",
+      "Estrategia de retención",
+      "Optimización de conversiones",
+      "Soporte estratégico continuo",
+    ],
+    button: {
+      text: "Hablar con Estrategia",
+      link: "/Aws_Triada_S3.github.io/contact",
+    },
   },
   {
     name: "Cloud Architecture",
     price: "Custom",
-    description: "Infraestructura robusta y automatización de datos bajo el estándar AWS.",
+    popular: false,
     features: [
-      "Migración a entorno AWS Cloud",
-      "Automatización con Python/SQL",
-      "Seguridad y escalabilidad total",
-      "Mantenimiento y eficiencia técnica",
+      "Todo lo de Digital Growth",
+      "Migración a entorno AWS",
+      "Automatización Python/SQL",
+      "Seguridad y escalabilidad",
+      "Mantenimiento técnico",
+      "Eficiencia de costes Cloud",
     ],
-    button: "Consultar Cloud Lead",
+    button: {
+      text: "Consultar Cloud Lead",
+      link: "/Aws_Triada_S3.github.io/contact",
+    },
   },
 ];
 ---
 
-<div class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
-  {
-    pricing.map((item) => (
-      <div class={`flex flex-col p-8 rounded-2xl border ${item.popular ? 'border-indigo-500 shadow-xl' : 'border-slate-200'} bg-white text-center relative`}>
-        {item.popular && (
-          <span class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
-            Más demandado
-          </span>
-        )}
-        <h3 class="text-xl font-bold text-slate-800">{item.name}</h3>
-        <p class="text-4xl font-bold mt-4 text-slate-900">{item.price}</p>
-        <p class="mt-4 text-slate-500 text-sm leading-relaxed">{item.description}</p>
-        
-        <ul class="mt-8 space-y-4 text-left flex-1">
-          {item.features.map((feature) => (
-            <li class="flex items-center gap-2 text-slate-600 text-sm">
-              <Icon name="bx:bx-check" class="w-5 h-5 text-indigo-500" />
-              {feature}
-            </li>
-          ))}
-        </ul>
-        
-        <div class="mt-10">
-          <Link
-            href="/contact"
-            style={item.popular ? "primary" : "outline"}
-            block>
-            {item.button}
-          </Link>
-        </div>
-      </div>
-    ))
-  }
-</div>
+<Layout title="Servicios | TRIAD">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Nuestras Soluciones</Fragment>
+      <Fragment slot="desc">
+        Estrategias a medida diseñadas para escalar tu negocio mediante datos y tecnología Cloud.
+      </Fragment>
+    </Sectionhead>
 
-<div class="mt-16 text-center max-w-2xl mx-auto">
-  <p class="text-slate-600 italic">
-    * En <strong>TRIAD</strong> cada proyecto es único. Estos planes sirven como base para entender nuestras áreas de impacto, pero adaptamos cada solución a la infraestructura y objetivos específicos de tu negocio.
-  </p>
-</div>
+    <div
+      class="grid md:grid-cols-3 gap-10 mx-auto max-w-screen-lg mt-12">
+      {pricing.map((item) => <PricingCard plan={item} />)}
+    </div>
+    
+    <div class="mt-20 text-center max-w-2xl mx-auto mb-20">
+      <p class="text-slate-500 italic text-sm">
+        * En <strong>TRIAD</strong> cada proyecto es único. Estos planes sirven como base para entender nuestras áreas de impacto.
+      </p>
+    </div>
+  </Container>
+</Layout>
