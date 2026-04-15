@@ -1,12 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/container.astro";
-import PricingCard from "@/components/ui/pricing.astro";
+import PricingCard from "@/components/ui/pricing.astro"; // Verifica que esta ruta es correcta
 
 const pricing = [
   {
     name: "Business Audit",
     price: "Consultar",
+    popular: false,
     features: [
       "Auditoría de datos inicial",
       "Mapa de procesos operativos",
@@ -36,6 +37,7 @@ const pricing = [
   {
     name: "Cloud Architecture",
     price: "Consultar",
+    popular: false,
     features: [
       "Migración a AWS",
       "Automatización con Python/SQL",
@@ -52,23 +54,21 @@ const pricing = [
 
 <Layout title="Productos | TRIAD">
   <Container>
-
-    <div class="text-center mt-10">
-      <h1 class="text-3xl font-bold text-slate-800">
+    <div class="text-center mt-16">
+      <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-slate-800">
         Nuestros Productos
       </h1>
-      <p class="text-slate-500 mt-2">
-        Soluciones adaptadas a tu negocio
+      <p class="text-lg mt-4 text-slate-600 mx-auto max-w-xl">
+        Soluciones estratégicas para analítica y arquitectura cloud diseñadas para escalar.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-10 mt-12">
+    <div class="grid md:grid-cols-3 gap-10 mt-16 max-w-6xl mx-auto mb-20">
       {
-        pricing.map((plan, index) => (
-          <PricingCard plan={plan} key={index} />
+        pricing.map((plan) => (
+          <PricingCard plan={plan} />
         ))
       }
     </div>
-
   </Container>
 </Layout>
