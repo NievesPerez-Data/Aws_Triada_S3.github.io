@@ -5,13 +5,60 @@ import Features from "@/components/features.astro";
 import Hero from "@/components/hero.astro";
 import Logos from "@/components/logos.astro";
 import Layout from "@/layouts/Layout.astro";
+import Sectionhead from "@/components/sectionhead.astro";
 ---
 
-<Layout title="">
+<Layout title="TRIAD | Data, Strategy & Product">
   <Container>
     <Hero />
-    <Features />
+    
     <Logos />
+
+    <section id="servicios" class="scroll-mt-24 py-16">
+      <Sectionhead>
+        <Fragment slot="title">Nuestros Servicios</Fragment>
+        <Fragment slot="desc">
+          Soluciones integrales que unen la analítica avanzada con el diseño de producto escalable.
+        </Fragment>
+      </Sectionhead>
+      <Features />
+    </section>
+
+    <section id="equipo" class="scroll-mt-24 py-16 border-t border-slate-100">
+      <Sectionhead>
+        <Fragment slot="title">Conoce al Equipo</Fragment>
+        <Fragment slot="desc">
+          Tres perfiles expertos unidos por la formación AWS re/Start para transformar tu negocio.
+        </Fragment>
+      </Sectionhead>
+
+      <div class="grid md:grid-cols-3 gap-10 mt-12">
+        <div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl">
+          <h3 class="font-bold text-xl text-slate-900">Nieves Pérez</h3>
+          <p class="text-indigo-600 font-medium text-sm mb-4">Business Intelligence & Strategy</p>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Especialista en unir la operativa de negocio con analítica avanzada. Experta en KPIs de Retail y toma de decisiones estratégicas basadas en evidencias.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl">
+          <h3 class="font-bold text-xl text-slate-900">Mayka Durán</h3>
+          <p class="text-indigo-600 font-medium text-sm mb-4">Data Analyst & Operations</p>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Experta en optimización de procesos y medición de desempeño. Transforma flujos operativos complejos en acciones concretas mediante Python y SQL.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl">
+          <h3 class="font-bold text-xl text-slate-900">Laura Parejo</h3>
+          <p class="text-indigo-600 font-medium text-sm mb-4">Senior Product Designer</p>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            10 años diseñando productos digitales a escala. Especialista en UX/UI y sistemas de diseño que validan hipótesis y miden el impacto real del producto.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <Cta />
   </Container>
 </Layout>
