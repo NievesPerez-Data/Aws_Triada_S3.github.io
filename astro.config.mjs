@@ -7,6 +7,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   site: "https://NievesP-rez-Datos.github.io",
+  base: '/NievesP-rez-Datos.github.io',
   integrations: [mdx(), sitemap(), icon()],
   vite: {
     plugins: [tailwindcss()],
