@@ -6,15 +6,15 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
   {
+    title: "Servicios",
+    path: "#servicios",
+  },
+  {
     title: "Equipo",
     path: "#equipo",
   },
   {
-    title: "Precios",
-    path: "/pricing",
-  },
-  {
-    title: "Sobre Nosotas",
+    title: "Sobre Nosotras",
     path: "/about",
   },
   {
@@ -28,10 +28,9 @@ const menuitems = [
   <header class="flex flex-col lg:flex-row justify-between items-center my-5">
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="text-lg"
-          ><span class="font-bold text-slate-800">Astro</span><span
-            class="text-slate-500">ship</span
-          >
+        <a href="/" class="text-lg">
+          <span class="font-bold text-slate-800 text-2xl tracking-tighter">TRIAD</span>
+          <span class="text-indigo-600 text-2xl font-bold">.</span>
         </a>
         <div class="block lg:hidden">
           <MenuIcon class="w-4 h-4 text-gray-800" />
@@ -54,13 +53,8 @@ const menuitems = [
                   <li>
                     <a
                       href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900">
+                      class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-indigo-600 transition">
                       <span> {item.title}</span>
-                      {item.badge && (
-                        <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase text-white bg-indigo-600 rounded-full">
-                          New
-                        </span>
-                      )}
                     </a>
                   </li>
                 )}
@@ -68,16 +62,11 @@ const menuitems = [
             ))
           }
         </ul>
-        <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="#" style="muted" block size="md">Log in</Link>
-          <Link href="#" size="md" block>Sign up</Link>
-        </div>
       </MenuItems>
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        <a href="#">Log in</a>
-        <Link href="#" size="md">Sign up</Link>
+        <Link href="/contact" size="md">Solicitar Info</Link>
       </div>
     </div>
   </header>
