@@ -1,18 +1,17 @@
 ---
-// Importaciones ajustadas a tu estructura de carpetas según la imagen
-import Container from "../container.astro"; // Subimos uno porque navbar está en su propia carpeta
-import Link from "../ui/link.astro";
+import Container from "@/components/container.astro";
+import Link from "@/components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
   {
     title: "Servicios",
-    path: "/#servicios", // Corregido para que funcione desde cualquier página
+    path: "#servicios",
   },
   {
-    title: "Productos",
-    path: "/pricing",
+    title: "Equipo",
+    path: "#equipo",
   },
   {
     title: "Sobre Nosotras",
@@ -33,29 +32,29 @@ const menuitems = [
           <span class="font-bold text-slate-800 text-2xl tracking-tighter">TRIAD</span>
           <span class="text-indigo-600 text-2xl font-bold">.</span>
         </a>
-
         <div class="block lg:hidden">
           <MenuIcon class="w-4 h-4 text-gray-800" />
         </div>
       </div>
-
       <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
         <ul class="flex flex-col lg:flex-row lg:gap-3">
           {
             menuitems.map((item, index) => (
               <>
-                {item.children ? (
+                {item.children && (
                   <Dropdown
                     title={item.title}
                     children={item.children}
                     lastItem={index === menuitems.length - 1}
                   />
-                ) : (
+                )}
+
+                {!item.children && (
                   <li>
                     <a
                       href={item.path}
                       class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-indigo-600 transition">
-                      <span>{item.title}</span>
+                      <span> {item.title}</span>
                     </a>
                   </li>
                 )}
@@ -65,13 +64,10 @@ const menuitems = [
         </ul>
       </MenuItems>
     </Astronav>
-
-    <div class="hidden lg:flex items-center gap-4">
-      <a 
-        href="/contact" 
-        class="bg-indigo-600 text-white px-5 py-2 rounded-md hover:bg-indigo-700 transition font-medium text-sm">
-        Solicitar Info
-      </a>
+    <div>
+      <div class="hidden lg:flex items-center gap-4">
+        <Link href="/contact" size="md">Solicitar Info</Link>
+      </div>
     </div>
   </header>
 </Container>
