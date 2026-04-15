@@ -2,67 +2,69 @@
 // @ts-ignore
 import { Icon } from "astro-icon/components";
 
-const features = [
+const services = [
   {
-    title: "Nieves Pérez",
+    title: "Análisis Estratégico",
     description:
-      "Business Intelligence & Strategy. Especialista en transformar KPIs de negocio y retail en decisiones comerciales accionables.",
-    icon: "bx:bxs-briefcase",
+      "Transformamos KPIs complejos en decisiones comerciales. Especialistas en unir la operativa de negocio con analítica de alta precisión.",
+    icon: "bx:bxs-pie-chart-alt-2",
   },
   {
-    title: "Mayka Durán",
+    title: "Optimización de Procesos",
     description:
-      "Data Analyst & Operations. Experta en optimización de procesos operativos mediante el uso de Python, SQL y modelado de datos.",
-    icon: "bx:bxs-analyse",
+      "Eliminamos cuellos de botella operativos mediante Python y SQL, garantizando que cada flujo de trabajo sea eficiente y medible.",
+    icon: "bx:bxs-component",
   },
   {
-    title: "Laura Parejo",
+    title: "Diseño de Producto UX",
     description:
-      "Senior Product Designer. Estrategia de producto y diseño UX/UI escalable para convertir problemas complejos en soluciones usables.",
+      "Diseñamos experiencias digitales escalables basadas en datos de usuario, asegurando productos intuitivos y de alto impacto.",
     icon: "bx:bxs-paint-roll",
   },
   {
-    title: "Análisis de Datos",
+    title: "Arquitectura Cloud AWS",
     description:
-      "Exploración, limpieza y transformación de datasets. Convertimos datos crudos en dashboards visuales (Tableau/Power BI).",
-    icon: "bx:bxs-data",
-  },
-  {
-    title: "Soluciones AWS Cloud",
-    description:
-      "Infraestructura escalable y segura. Aplicamos el estándar AWS re/Start para garantizar un rendimiento óptimo en la nube.",
+      "Implementamos soluciones nativas en la nube bajo estándares de AWS re/Start, aportando seguridad y escalabilidad total.",
     icon: "bx:bxl-aws",
   },
   {
-    title: "Estrategia Digital",
+    title: "Business Intelligence",
     description:
-      "Alineamos tecnología, diseño y objetivos de negocio para asegurar que cada producto digital genere un impacto real.",
+      "Creación de dashboards avanzados en Tableau y Power BI que permiten visualizar el estado real de tu negocio en tiempo real.",
+    icon: "bx:bxs-data",
+  },
+  {
+    title: "Estrategia de Conversión",
+    description:
+      "Auditamos y rediseñamos embudos de venta para maximizar el ROI, uniendo métricas de comportamiento con visión de negocio.",
     icon: "bx:bxs-rocket",
   },
 ];
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Expertise 360°: De los datos a la estrategia
-  </h2>
-  <p class="text-lg mt-4 text-slate-600">
-    Unimos el análisis de datos avanzado, la optimización de procesos operativos y el diseño de producto bajo un mismo nexo: la potencia de AWS.
-  </p>
-</div>
+<div class="max-w-6xl mx-auto px-4">
+  <div class="mt-16 text-center">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+      Experiencia 360°: De los datos a la estrategia
+    </h2>
+    <p class="text-lg mt-4 text-slate-600 max-w-2xl mx-auto">
+      Unimos analítica avanzada, optimización operativa y diseño de producto bajo la potencia de AWS.
+    </p>
+  </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
-  {
-    features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 mt-16 gap-8">
+    {
+      services.map((item) => (
+        <div class="flex flex-col items-center text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-indigo-500 hover:shadow-xl transition-all duration-300 group">
+          <div class="bg-indigo-50 rounded-xl p-3 w-14 h-14 flex items-center justify-center group-hover:bg-indigo-600 transition-colors duration-300">
+            <Icon class="text-indigo-600 w-8 h-8 group-hover:text-white" name={item.icon} />
+          </div>
+          <h3 class="font-bold text-xl mt-6">{item.title}</h3>
+          <p class="text-slate-500 mt-3 leading-relaxed text-sm">
+            {item.description}
+          </p>
         </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-        </div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>
