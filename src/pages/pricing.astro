@@ -1,97 +1,59 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Container from "@/components/container.astro";
-import Sectionhead from "@/components/sectionhead.astro";
-import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/container.astro";
+import PricingCard from "../components/ui/pricing.astro";
 
-const team = [
+const pricing = [
   {
-    name: "Nieves Pérez",
-    role: "Strategy & Business Intelligence Lead",
-    desc: "Especialista en unir la operativa de negocio con analítica avanzada. Experta en KPIs de Retail y toma de decisiones estratégicas basadas en evidencias.",
-    linkedin: "https://www.linkedin.com/in/nievesperezalonso",
+    name: "Business Audit",
+    price: "Consultar",
+    popular: false,
+    features: [
+      "Auditoría de datos inicial",
+      "Mapa de procesos operativos",
+      "Identificación de ROI",
+      "Reporte de recomendaciones",
+    ],
+    button: { text: "Solicitar Auditoría", link: "/contact" },
   },
   {
-    name: "Mayka Durán",
-    role: "Operations & Data Analyst Lead",
-    desc: "Arquitecta de eficiencia operativa. Utiliza Python y SQL para limpiar y automatizar flujos de datos, eliminando fricciones en el escalado de negocios.",
-    linkedin: "https://www.linkedin.com/in/mdelcarmenduran/",
+    name: "Digital Growth",
+    price: "A medida",
+    popular: true,
+    features: [
+      "Rediseño UX/UI",
+      "Analítica avanzada",
+      "Estrategia de retención",
+      "Soporte estratégico",
+    ],
+    button: { text: "Hablar con Estrategia", link: "/contact" },
   },
   {
-    name: "Laura Parejo",
-    role: "Senior Product & UX Lead",
-    desc: "Más de 10 años diseñando productos digitales globales. Transforma la complejidad técnica en interfaces intuitivas que maximizan la conversión.",
-    linkedin: "https://www.linkedin.com/in/laura-parejo-aranda", 
+    name: "Cloud Architecture",
+    price: "Consultar",
+    popular: false,
+    features: [
+      "Migración a AWS",
+      "Automatización con Python/SQL",
+      "Escalabilidad",
+      "Mantenimiento técnico",
+    ],
+    button: { text: "Consultar Cloud Lead", link: "/contact" },
   },
 ];
 ---
 
-<Layout title="Sobre Nosotras | TRIAD">
+<Layout title="Productos | TRIAD">
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">Sobre Nosotras</Fragment>
-      <Fragment slot="desc">El poder de la intersección: Datos, Procesos y Diseño.</Fragment>
-    </Sectionhead>
+    <div class="text-center mt-16">
+      <h1 class="text-4xl lg:text-5xl font-bold text-slate-800">Nuestros Productos</h1>
+      <p class="text-lg mt-4 text-slate-600">Soluciones de datos y Cloud para el mundo real.</p>
+    </div>
 
-    <div class="flex flex-col gap-16 mt-16">
-      <div class="max-w-4xl mx-auto text-center">
-        <p class="text-lg leading-relaxed text-slate-600">
-          En <strong>TRIAD</strong>, no creemos en las soluciones aisladas. Creemos que la verdadera ventaja competitiva nace donde los datos se encuentran con la eficiencia operativa y una experiencia de usuario impecable. Somos tres profesionales unidas por la infraestructura de <strong>AWS</strong> para transformar la complejidad técnica en claridad estratégica.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-10">
-        {
-          team.map((item) => (
-            <div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:border-indigo-500 transition-all text-center flex flex-col items-center">
-              <div class="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-indigo-50 transition-colors">
-                <Icon name="bx:bxs-user" class="w-10 h-10 text-slate-400 group-hover:text-indigo-600" />
-              </div>
-              <h3 class="text-xl font-bold text-slate-800">{item.name}</h3>
-              <p class="text-indigo-600 text-sm font-medium mb-4">{item.role}</p>
-              <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-1">
-                {item.desc}
-              </p>
-              <a
-                href={item.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-2 text-slate-400 hover:text-[#0077b5] transition-colors font-medium text-sm">
-                <Icon name="bx:bxl-linkedin-square" class="w-6 h-6" />
-                <span>Ver Perfil Profesional</span>
-              </a>
-            </div>
-          ))
-        }
-      </div>
-
-      <div class="mt-8 py-12 border-t border-slate-100 text-center">
-        <h2 class="text-3xl font-bold text-slate-800">¿Por qué TRIAD?</h2>
-        <p class="max-w-2xl mx-auto mt-4 text-slate-600">
-          Nuestra fuerza reside en la complementariedad. Mientras <strong>Mayka</strong> asegura que los datos fluyan, <strong>Nieves</strong> extrae la inteligencia de negocio y <strong>Laura</strong> los convierte en una herramienta intuitiva. Todo bajo el ecosistema escalable de <strong>AWS</strong>.
-        </p>
-        <div class="mt-8">
-          <a
-            href="/contact"
-            class="bg-black text-white px-8 py-3 rounded-lg hover:bg-slate-800 transition">
-            ¿Hablamos de tu proyecto?
-          </a>
-        </div>
-      </div>
-
-      <section class="mt-10 py-10 px-6 bg-indigo-50/50 rounded-2xl border-2 border-dashed border-indigo-100">
-        <div class="max-w-3xl mx-auto text-center">
-          <h4 class="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-4">Proyecto Académico</h4>
-          <p class="text-sm text-slate-600 leading-relaxed italic mb-4">
-            Esta página web es <strong>totalmente ficticia</strong> y ha sido realizada como parte de un trabajo grupal para nuestra formación en <strong>AWS re/Start</strong>, impartida por <strong>Adalab</strong> y la <strong>Fundación Nous Cims</strong>. 
-          </p>
-          <div class="mt-6 p-6 bg-white/60 rounded-xl shadow-sm border border-white">
-            <p class="text-sm text-slate-700 leading-relaxed">
-              El objetivo técnico es demostrar nuestra capacidad para <strong>desplegar una web estática en un bucket de Amazon S3</strong>. Nuestra profesora nos dijo que <strong>"el límite es el cielo"</strong>. Como analistas de datos sin conocimientos previos de programación web, decidimos no conformarnos con lo básico. Hemos querido desafiar nuestros propios límites aprendiendo <strong>Astro</strong> para construir este sitio, demostrando que con curiosidad y la infraestructura de AWS, nosotras también podemos <strong>tocar ese cielo</strong>.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div class="grid md:grid-cols-3 gap-10 mt-16 max-w-6xl mx-auto mb-20">
+      {pricing.map((plan) => (
+        <PricingCard plan={plan} />
+      ))}
     </div>
   </Container>
 </Layout>
