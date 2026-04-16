@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.18.1"><!-- <link rel="preload" as="image" href={src} alt="Hero" /> --><title>Propósito del Proyecto | TRIAD | Astroship</title><link rel="canonical" href="https://nievesp-rez-datos.github.io/Aws_Triada_S3.github.io/proyecto/"><meta name="description" content="Astroship is a starter website template for Astro built with TailwindCSS."><meta name="robots" content="index, follow"><meta property="og:title" content="Astroship - Starter Template for Astro"><meta property="og:type" content="website"><meta property="og:image" content="https://nievesp-rez-datos.github.io/opengraph.jpg"><meta property="og:url" content="https://nievesp-rez-datos.github.io/Aws_Triada_S3.github.io/proyecto/"><meta property="og:image:url" content="https://nievesp-rez-datos.github.io/opengraph.jpg"><meta property="og:image:alt" content="Astroship Homepage Screenshot"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@web3templates"><meta name="twitter:creator" content="@surjithctly"><link rel="stylesheet" href="/Aws_Triada_S3.github.io/_astro/about.DsvABq19.css"></head> <body> <div class="max-w-(--breakpoint-xl) mx-auto px-5">  <header class="flex flex-col lg:flex-row justify-between items-center my-5">  <div class="flex w-full lg:w-auto items-center justify-between"> <a href="/Aws_Triada_S3.github.io/" class="text-lg"> <span class="font-bold text-slate-800 text-2xl tracking-tighter">TRIAD</span> <span class="text-indigo-600 text-2xl font-bold">.</span> </a> <div class="block lg:hidden"> <button id="astronav-menu" aria-label="Toggle Menu">  <svg fill="currentColor" class="w-4 h-4 text-gray-800" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <title>Toggle Menu</title> <path class="astronav-close-icon astronav-toggle hidden" fill-rule="evenodd" clip-rule="evenodd" d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"></path> <path class="astronav-open-icon astronav-toggle" fill-rule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"></path> </svg>  </button> </div> </div> <nav class="astronav-items astronav-toggle hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">  <ul class="flex flex-col lg:flex-row lg:gap-3"> <li> <a href="/Aws_Triada_S3.github.io/" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Servicios</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/pricing" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Productos</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/about" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Sobre Nosotras</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/contact" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Contacto</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/proyecto" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> El Proyecto</span> </a> </li> </ul>  </nav>  <script>(function(){const closeOnClick = false;
+
+["DOMContentLoaded", "astro:after-swap"].forEach((event) => {
+  document.addEventListener(event, addListeners);
+});
+
+// Function to clone and replace elements
+function cloneAndReplace(element) {
+  const clone = element.cloneNode(true);
+  element.parentNode.replaceChild(clone, element);
+}
+
+function addListeners() {
+  // Clean up existing listeners
+  const oldMenuButton = document.getElementById("astronav-menu");
+  if (oldMenuButton) {
+    cloneAndReplace(oldMenuButton);
+  }
+
+  const oldDropdownMenus = document.querySelectorAll(".astronav-dropdown");
+  oldDropdownMenus.forEach((menu) => {
+    cloneAndReplace(menu);
+  });
+
+  // Mobile nav toggle
+  const menuButton = document.getElementById("astronav-menu");
+  menuButton && menuButton.addEventListener("click", toggleMobileNav);
+
+  // Dropdown menus
+  const dropdownMenus = document.querySelectorAll(".astronav-dropdown");
+  dropdownMenus.forEach((menu) => {
+    const button = menu.querySelector("button");
+    button &&
+      button.addEventListener("click", (event) =>
+        toggleDropdownMenu(event, menu, dropdownMenus)
+      );
+
+    // Handle Submenu Dropdowns
+    const dropDownSubmenus = menu.querySelectorAll(
+      ".astronav-dropdown-submenu"
+    );
+
+    dropDownSubmenus.forEach((submenu) => {
+      const submenuButton = submenu.querySelector("button");
+      submenuButton &&
+        submenuButton.addEventListener("click", (event) => {
+          event.stopImmediatePropagation();
+          toggleSubmenuDropdown(event, submenu);
+        });
+    });
+  });
+
+  // Clicking away from dropdown will remove the dropdown class
+  document.addEventListener("click", closeAllDropdowns);
+
+  if (closeOnClick) {
+    handleCloseOnClick();
+  }
+}
+
+function toggleMobileNav() {
+  [...document.querySelectorAll(".astronav-toggle")].forEach((el) => {
+    el.classList.toggle("hidden");
+  });
+}
+
+function toggleDropdownMenu(event, menu, dropdownMenus) {
+  toggleMenu(menu);
+
+  // Close one dropdown when selecting another
+  Array.from(dropdownMenus)
+    .filter((el) => el !== menu && !menu.contains(el))
+    .forEach(closeMenu);
+
+  event.stopPropagation();
+}
+
+function toggleSubmenuDropdown(event, submenu) {
+  event.stopPropagation();
+  toggleMenu(submenu);
+
+  // Close sibling submenus at the same nesting level
+  const siblingSubmenus = submenu
+    .closest(".astronav-dropdown")
+    .querySelectorAll(".astronav-dropdown-submenu");
+  Array.from(siblingSubmenus)
+    .filter((el) => el !== submenu && !submenu.contains(el))
+    .forEach(closeMenu);
+}
+
+function closeAllDropdowns(event) {
+  const dropdownMenus = document.querySelectorAll(".dropdown-toggle");
+  const dropdownParent = document.querySelectorAll(
+    ".astronav-dropdown, .astronav-dropdown-submenu"
+  );
+  const isButtonInsideDropdown = [
+    ...document.querySelectorAll(
+      `.astronav-dropdown button, .astronav-dropdown label, .astronav-dropdown input,
+	  .astronav-dropdown-submenu button, .astronav-dropdown-submenu label, .astronav-dropdown-submenu input,
+	  #astronav-menu`
+    ),
+  ].some((button) => button.contains(event.target));
+  if (!isButtonInsideDropdown) {
+    dropdownMenus.forEach((d) => {
+      // console.log("I ran", d);
+      // if (!d.contains(event.target)) {
+      d.classList.remove("open");
+      d.removeAttribute("open");
+      d.classList.add("hidden");
+      // }
+    });
+    dropdownParent.forEach((d) => {
+      d.classList.remove("open");
+      d.removeAttribute("open");
+      d.setAttribute("aria-expanded", "false");
+    });
+  }
+}
+
+function toggleMenu(menu) {
+  menu.classList.toggle("open");
+  const expanded = menu.getAttribute("aria-expanded") === "true";
+  menu.setAttribute("aria-expanded", expanded ? "false" : "true");
+  menu.hasAttribute("open")
+    ? menu.removeAttribute("open")
+    : menu.setAttribute("open", "");
+
+  const dropdownToggle = menu.querySelector(".dropdown-toggle");
+  const dropdownExpanded = dropdownToggle.getAttribute("aria-expanded");
+  dropdownToggle.classList.toggle("hidden");
+  dropdownToggle.setAttribute(
+    "aria-expanded",
+    dropdownExpanded === "true" ? "false" : "true"
+  );
+}
+
+function closeMenu(menu) {
+  // console.log("closing", menu);
+  menu.classList.remove("open");
+  menu.removeAttribute("open");
+  menu.setAttribute("aria-expanded", "false");
+  const dropdownToggles = menu.querySelectorAll(".dropdown-toggle");
+  dropdownToggles.forEach((toggle) => {
+    toggle.classList.add("hidden");
+    toggle.setAttribute("aria-expanded", "false");
+  });
+}
+
+function handleCloseOnClick() {
+  const navMenuItems = document.querySelector(".astronav-items");
+  const navToggle = document.getElementById("astronav-menu");
+  const navLink = navMenuItems && navMenuItems.querySelectorAll("a");
+
+  const MenuIcons = navToggle.querySelectorAll(".astronav-toggle");
+
+  navLink &&
+    navLink.forEach((item) => {
+      item.addEventListener("click", () => {
+        navMenuItems?.classList.add("hidden");
+        MenuIcons.forEach((el) => {
+          el.classList.toggle("hidden");
+        });
+      });
+    });
+}
+})();</script> <div> <div class="hidden lg:flex items-center gap-4"> <a href="/Aws_Triada_S3.github.io/contact" class="rounded-sm text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-black text-white hover:bg-gray-800  border-2 border-transparent">Solicitar Info </a> </div> </div> </header>  </div>  <div class="max-w-(--breakpoint-xl) mx-auto px-5">  <div class="mt-16 text-center"> <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight"> El Desafío: Web Estática en la Nube </h1> <p class="text-lg mt-4 text-slate-600"> 
+Este proyecto nace con un objetivo técnico claro: dominar el despliegue profesional de arquitecturas web utilizando Amazon Web Services (AWS).
+ </p> </div> <div class="mt-16 max-w-4xl mx-auto"> <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm mb-12"> <div class="flex items-center gap-4 mb-6"> <div class="bg-rose-400 p-3 rounded-xl text-white"> <svg width="1em" height="1em" class="size-8" data-icon="bx:bxl-aws">   <symbol id="ai:bx:bxl-aws" viewBox="0 0 24 24"><path d="M18.75 11.35a4.32 4.32 0 0 1-.79-.08a3.9 3.9 0 0 1-.73-.23l-.17-.04h-.12q-.15 0-.15.21v.33a.43.43 0 0 0 0 .19a.5.5 0 0 0 .21.19a3 3 0 0 0 .76.26a4.38 4.38 0 0 0 1 .12a3 3 0 0 0 1-.14a1.94 1.94 0 0 0 .73-.37a1.81 1.81 0 0 0 .49-.58a1.79 1.79 0 0 0 .17-.78a1.54 1.54 0 0 0-.3-.93a2.15 2.15 0 0 0-1-.64l-.95-.3a2 2 0 0 1-.73-.36a.65.65 0 0 1-.2-.47a.66.66 0 0 1 .31-.6a1.82 1.82 0 0 1 .89-.18a2.89 2.89 0 0 1 1.27.26a.79.79 0 0 0 .26.08c.1 0 .15-.08.15-.22v-.36a.38.38 0 0 0-.06-.22a.56.56 0 0 0-.2-.16a1.55 1.55 0 0 0-.28-.12a3.44 3.44 0 0 0-.38-.11l-.44-.1A3.4 3.4 0 0 0 19 6a2.82 2.82 0 0 0-.83.11a2.19 2.19 0 0 0-.7.35A1.61 1.61 0 0 0 17 7a1.5 1.5 0 0 0-.18.74a1.6 1.6 0 0 0 .33 1a2.08 2.08 0 0 0 1.06.68l1 .3a1.58 1.58 0 0 1 .67.34a.66.66 0 0 1 .18.47a.72.72 0 0 1-.35.63a1.83 1.83 0 0 1-.96.19zM12.94 6.5a.48.48 0 0 0-.13-.26a.37.37 0 0 0-.26-.07H12a.43.43 0 0 0-.26.07a.42.42 0 0 0-.13.26l-1 4.4l-1.14-4.4a.48.48 0 0 0-.14-.26s-.13-.07-.26-.07h-.65c-.11 0-.16.06-.16.17a1.22 1.22 0 0 0 .06.27l1.56 5.14A.61.61 0 0 0 10 12a.45.45 0 0 0 .26.06h.57a.49.49 0 0 0 .27-.06a.57.57 0 0 0 .12-.27l1-4.28l1 4.29a.42.42 0 0 0 .12.26a.4.4 0 0 0 .27.07h.57a.41.41 0 0 0 .25-.07a.44.44 0 0 0 .14-.26l1.61-5.14a.73.73 0 0 0 0-.16a.52.52 0 0 0 0-.11a.15.15 0 0 0-.17-.17h-.62a.45.45 0 0 0-.26.07a.68.68 0 0 0-.13.26L14 11zM5.77 8.63a5.92 5.92 0 0 0-.71-.05a2.42 2.42 0 0 0-1.63.52a1.72 1.72 0 0 0-.6 1.37a1.7 1.7 0 0 0 .49 1.28a1.82 1.82 0 0 0 1.33.48a2.48 2.48 0 0 0 2-.92a3.5 3.5 0 0 0 .2.39a2.34 2.34 0 0 0 .24.31a.26.26 0 0 0 .37 0l.42-.28a.28.28 0 0 0 .13-.2a.27.27 0 0 0 0-.16a3.63 3.63 0 0 1-.21-.47a2 2 0 0 1-.07-.6V8.19a2.2 2.2 0 0 0-.55-1.64A2.42 2.42 0 0 0 5.33 6a3.9 3.9 0 0 0-1 .13a3.9 3.9 0 0 0-.84.3a.47.47 0 0 0-.18.14a.37.37 0 0 0 0 .23v.33c0 .14 0 .2.14.2a.26.26 0 0 0 .11 0l.23-.08A4.32 4.32 0 0 1 4.42 7a3 3 0 0 1 .72-.09a1.5 1.5 0 0 1 1.08.31a1.46 1.46 0 0 1 .31 1.06v.49zm.78.9v.27a2.36 2.36 0 0 1-.07.58a1.06 1.06 0 0 1-.23.43a1.38 1.38 0 0 1-.63.42a2.12 2.12 0 0 1-.68.12a.94.94 0 0 1-.7-.24a.92.92 0 0 1-.24-.71a.92.92 0 0 1 .33-.76a1.52 1.52 0 0 1 1-.27h.62a5.67 5.67 0 0 1 .6.16zM19.76 15a19.68 19.68 0 0 1-7.55 1.54a20 20 0 0 1-9.9-2.62c-.24-.15-.43.1-.22.29A14.68 14.68 0 0 0 12 18a14.4 14.4 0 0 0 8.1-2.47c.34-.31.03-.72-.34-.53z" fill="currentColor"/><path d="M18.38 14.06c-.19.14-.16.33.05.3c.71-.09 2.28-.27 2.56.09s-.31 1.83-.58 2.49c-.08.2.1.28.28.13a3.9 3.9 0 0 0 1.23-3.34a3.94 3.94 0 0 0-3.54.33z" fill="currentColor"/></symbol><use href="#ai:bx:bxl-aws"></use>  </svg> </div> <h2 class="text-2xl font-bold text-slate-800">Objetivo: Despliegue en AWS S3</h2> </div> <p class="text-lg text-slate-600 leading-relaxed">
+La meta principal de <strong>TRIAD</strong> ha sido demostrar la capacidad de orquestar y desplegar una web estática optimizada dentro de un <strong>bucket de Amazon S3</strong>. 
+          Este proceso no solo implica subir archivos, sino configurar permisos, políticas de acceso y garantizar la alta disponibilidad de la infraestructura Cloud.
+</p> </div> <div class="grid md:grid-cols-2 gap-8"> <div class="flex gap-4"> <div class="shrink-0"> <svg width="1em" height="1em" class="size-8 text-rose-400" data-icon="bx:bx-cloud-upload">   <symbol id="ai:bx:bx-cloud-upload" viewBox="0 0 24 24"><path fill="currentColor" d="M13 19v-4h3l-4-5l-4 5h3v4z"/><path fill="currentColor" d="M7 19h2v-2H7c-1.654 0-3-1.346-3-3c0-1.404 1.199-2.756 2.673-3.015l.581-.102l.192-.558C8.149 8.274 9.895 7 12 7c2.757 0 5 2.243 5 5v1h1c1.103 0 2 .897 2 2s-.897 2-2 2h-3v2h3c2.206 0 4-1.794 4-4a4.01 4.01 0 0 0-3.056-3.888C18.507 7.67 15.56 5 12 5C9.244 5 6.85 6.611 5.757 9.15C3.609 9.792 2 11.82 2 14c0 2.757 2.243 5 5 5"/></symbol><use href="#ai:bx:bx-cloud-upload"></use>  </svg> </div> <div> <h3 class="font-bold text-slate-800">Infraestructura como Servicio</h3> <p class="text-slate-600 text-sm mt-1">Gestión de almacenamiento de objetos (S3) para servir contenido de alto rendimiento.</p> </div> </div> <div class="flex gap-4"> <div class="shrink-0"> <svg width="1em" height="1em" class="size-8 text-rose-400" data-icon="bx:bx-code-alt">   <symbol id="ai:bx:bx-code-alt" viewBox="0 0 24 24"><path fill="currentColor" d="m7.375 16.781l1.25-1.562L4.601 12l4.024-3.219l-1.25-1.562l-5 4a1 1 0 0 0 0 1.562zm9.25-9.562l-1.25 1.562L19.399 12l-4.024 3.219l1.25 1.562l5-4a1 1 0 0 0 0-1.562zm-1.649-4.003l-4 18l-1.953-.434l4-18z"/></symbol><use href="#ai:bx:bx-code-alt"></use>  </svg> </div> <div> <h3 class="font-bold text-slate-800">Arquitectura Astro</h3> <p class="text-slate-600 text-sm mt-1">Uso de frameworks modernos para generar HTML estático eficiente y ligero.</p> </div> </div> <div class="flex gap-4"> <div class="shrink-0"> <svg width="1em" height="1em" class="size-8 text-rose-400" data-icon="bx:bx-shield-quarter">   <symbol id="ai:bx:bx-shield-quarter" viewBox="0 0 24 24"><path fill="currentColor" d="M20.995 6.9a1 1 0 0 0-.548-.795l-8-4a1 1 0 0 0-.895 0l-8 4a1 1 0 0 0-.547.795c-.011.107-.961 10.767 8.589 15.014a1 1 0 0 0 .812 0c9.55-4.247 8.6-14.906 8.589-15.014M12 19.897V12H5.51a15.5 15.5 0 0 1-.544-4.365L12 4.118V12h6.46c-.759 2.74-2.498 5.979-6.46 7.897"/></symbol><use href="#ai:bx:bx-shield-quarter"></use>  </svg> </div> <div> <h3 class="font-bold text-slate-800">Políticas de Acceso</h3> <p class="text-slate-600 text-sm mt-1">Configuración de seguridad y visibilidad pública mediante AWS IAM y Bucket Policies.</p> </div> </div> <div class="flex gap-4"> <div class="shrink-0"> <svg width="1em" height="1em" class="size-8 text-rose-400" data-icon="bx:bx-git-merge">   <symbol id="ai:bx:bx-git-merge" viewBox="0 0 24 24"><path fill="currentColor" d="M2.5 18.5C2.5 20.43 4.07 22 6 22s3.5-1.57 3.5-3.5c0-1.58-1.06-2.903-2.5-3.337v-3.488c.244.273.509.527.813.744c1.18.844 2.617 1.098 3.918 1.098c.966 0 1.853-.14 2.506-.281a3.5 3.5 0 0 0 3.264 2.265c1.93 0 3.5-1.57 3.5-3.5s-1.57-3.5-3.5-3.5a3.5 3.5 0 0 0-3.404 2.718c-1.297.321-3.664.616-5.119-.426c-.666-.477-1.09-1.239-1.306-2.236C8.755 7.96 9.5 6.821 9.5 5.5C9.5 3.57 7.93 2 6 2S2.5 3.57 2.5 5.5c0 1.58 1.06 2.903 2.5 3.337v6.326c-1.44.434-2.5 1.757-2.5 3.337m15-8c.827 0 1.5.673 1.5 1.5s-.673 1.5-1.5 1.5S16 12.827 16 12s.673-1.5 1.5-1.5m-10 8c0 .827-.673 1.5-1.5 1.5s-1.5-.673-1.5-1.5S5.173 17 6 17s1.5.673 1.5 1.5m-3-13C4.5 4.673 5.173 4 6 4s1.5.673 1.5 1.5S6.827 7 6 7s-1.5-.673-1.5-1.5"/></symbol><use href="#ai:bx:bx-git-merge"></use>  </svg> </div> <div> <h3 class="font-bold text-slate-800">Integración Continua</h3> <p class="text-slate-600 text-sm mt-1">Despliegue automatizado para asegurar que cada cambio se refleje en la nube al instante.</p> </div> </div> </div> <section class="mt-20"> <h2 class="text-center text-2xl font-bold text-slate-800 mb-10">Evidencia del Despliegue</h2> <div class="aspect-video bg-slate-900 rounded-2xl shadow-2xl flex flex-col items-center justify-center text-white p-6 overflow-hidden border-4 border-rose-400/20"> <svg width="1em" height="1em" class="size-20 mb-4 text-rose-400" data-icon="bx:bx-play-circle">   <symbol id="ai:bx:bx-play-circle" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10s10-4.486 10-10S17.514 2 12 2m0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8s8 3.589 8 8s-3.589 8-8 8"/><path fill="currentColor" d="m9 17l8-5l-8-5z"/></symbol><use href="#ai:bx:bx-play-circle"></use>  </svg> <p class="text-center italic opacity-80 max-w-md">
+Próximamente: Vídeo demostrativo del proceso de configuración en la consola de AWS.
+</p> </div> <p class="text-center mt-6 text-slate-500 text-sm font-medium">
+Captura real del entorno de trabajo en AWS S3.
+</p> </section> </div>  </div>  <footer class="my-20"> <p class="text-center text-sm text-slate-500">
+Copyright © 2026 Astroship. All rights reserved.
+</p> <!--
+    Can we ask you a favor 🙏
+    Please keep this backlink on your website if possible.
+    or Purchase a commercial license from https://web3templates.com
+  --> <p class="text-center text-xs text-slate-500 mt-1">
+Made by <a href="https://web3templates.com" target="_blank" rel="noopener" class="hover:underline">
+Web3Templates
+</a> </p> </footer>  </body> </html>

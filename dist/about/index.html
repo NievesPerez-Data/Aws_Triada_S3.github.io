@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.18.1"><!-- <link rel="preload" as="image" href={src} alt="Hero" /> --><title>Sobre Nosotras | TRIAD | Astroship</title><link rel="canonical" href="https://nievesp-rez-datos.github.io/Aws_Triada_S3.github.io/about/"><meta name="description" content="Astroship is a starter website template for Astro built with TailwindCSS."><meta name="robots" content="index, follow"><meta property="og:title" content="Astroship - Starter Template for Astro"><meta property="og:type" content="website"><meta property="og:image" content="https://nievesp-rez-datos.github.io/opengraph.jpg"><meta property="og:url" content="https://nievesp-rez-datos.github.io/Aws_Triada_S3.github.io/about/"><meta property="og:image:url" content="https://nievesp-rez-datos.github.io/opengraph.jpg"><meta property="og:image:alt" content="Astroship Homepage Screenshot"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@web3templates"><meta name="twitter:creator" content="@surjithctly"><link rel="stylesheet" href="/Aws_Triada_S3.github.io/_astro/about.DsvABq19.css">
+<style>.triad-gradient-text[data-astro-cid-kh7btl4r]{background:linear-gradient(135deg,#ffdab9,#f4a460,#f08080 60%,#e6e6fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block}
+</style></head> <body> <div class="max-w-(--breakpoint-xl) mx-auto px-5">  <header class="flex flex-col lg:flex-row justify-between items-center my-5">  <div class="flex w-full lg:w-auto items-center justify-between"> <a href="/Aws_Triada_S3.github.io/" class="text-lg"> <span class="font-bold text-slate-800 text-2xl tracking-tighter">TRIAD</span> <span class="text-indigo-600 text-2xl font-bold">.</span> </a> <div class="block lg:hidden"> <button id="astronav-menu" aria-label="Toggle Menu">  <svg fill="currentColor" class="w-4 h-4 text-gray-800" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <title>Toggle Menu</title> <path class="astronav-close-icon astronav-toggle hidden" fill-rule="evenodd" clip-rule="evenodd" d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"></path> <path class="astronav-open-icon astronav-toggle" fill-rule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"></path> </svg>  </button> </div> </div> <nav class="astronav-items astronav-toggle hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">  <ul class="flex flex-col lg:flex-row lg:gap-3"> <li> <a href="/Aws_Triada_S3.github.io/" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Servicios</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/pricing" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Productos</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/about" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Sobre Nosotras</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/contact" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Contacto</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/proyecto" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> El Proyecto</span> </a> </li> </ul>  </nav>  <script>(function(){const closeOnClick = false;
+
+["DOMContentLoaded", "astro:after-swap"].forEach((event) => {
+  document.addEventListener(event, addListeners);
+});
+
+// Function to clone and replace elements
+function cloneAndReplace(element) {
+  const clone = element.cloneNode(true);
+  element.parentNode.replaceChild(clone, element);
+}
+
+function addListeners() {
+  // Clean up existing listeners
+  const oldMenuButton = document.getElementById("astronav-menu");
+  if (oldMenuButton) {
+    cloneAndReplace(oldMenuButton);
+  }
+
+  const oldDropdownMenus = document.querySelectorAll(".astronav-dropdown");
+  oldDropdownMenus.forEach((menu) => {
+    cloneAndReplace(menu);
+  });
+
+  // Mobile nav toggle
+  const menuButton = document.getElementById("astronav-menu");
+  menuButton && menuButton.addEventListener("click", toggleMobileNav);
+
+  // Dropdown menus
+  const dropdownMenus = document.querySelectorAll(".astronav-dropdown");
+  dropdownMenus.forEach((menu) => {
+    const button = menu.querySelector("button");
+    button &&
+      button.addEventListener("click", (event) =>
+        toggleDropdownMenu(event, menu, dropdownMenus)
+      );
+
+    // Handle Submenu Dropdowns
+    const dropDownSubmenus = menu.querySelectorAll(
+      ".astronav-dropdown-submenu"
+    );
+
+    dropDownSubmenus.forEach((submenu) => {
+      const submenuButton = submenu.querySelector("button");
+      submenuButton &&
+        submenuButton.addEventListener("click", (event) => {
+          event.stopImmediatePropagation();
+          toggleSubmenuDropdown(event, submenu);
+        });
+    });
+  });
+
+  // Clicking away from dropdown will remove the dropdown class
+  document.addEventListener("click", closeAllDropdowns);
+
+  if (closeOnClick) {
+    handleCloseOnClick();
+  }
+}
+
+function toggleMobileNav() {
+  [...document.querySelectorAll(".astronav-toggle")].forEach((el) => {
+    el.classList.toggle("hidden");
+  });
+}
+
+function toggleDropdownMenu(event, menu, dropdownMenus) {
+  toggleMenu(menu);
+
+  // Close one dropdown when selecting another
+  Array.from(dropdownMenus)
+    .filter((el) => el !== menu && !menu.contains(el))
+    .forEach(closeMenu);
+
+  event.stopPropagation();
+}
+
+function toggleSubmenuDropdown(event, submenu) {
+  event.stopPropagation();
+  toggleMenu(submenu);
+
+  // Close sibling submenus at the same nesting level
+  const siblingSubmenus = submenu
+    .closest(".astronav-dropdown")
+    .querySelectorAll(".astronav-dropdown-submenu");
+  Array.from(siblingSubmenus)
+    .filter((el) => el !== submenu && !submenu.contains(el))
+    .forEach(closeMenu);
+}
+
+function closeAllDropdowns(event) {
+  const dropdownMenus = document.querySelectorAll(".dropdown-toggle");
+  const dropdownParent = document.querySelectorAll(
+    ".astronav-dropdown, .astronav-dropdown-submenu"
+  );
+  const isButtonInsideDropdown = [
+    ...document.querySelectorAll(
+      `.astronav-dropdown button, .astronav-dropdown label, .astronav-dropdown input,
+	  .astronav-dropdown-submenu button, .astronav-dropdown-submenu label, .astronav-dropdown-submenu input,
+	  #astronav-menu`
+    ),
+  ].some((button) => button.contains(event.target));
+  if (!isButtonInsideDropdown) {
+    dropdownMenus.forEach((d) => {
+      // console.log("I ran", d);
+      // if (!d.contains(event.target)) {
+      d.classList.remove("open");
+      d.removeAttribute("open");
+      d.classList.add("hidden");
+      // }
+    });
+    dropdownParent.forEach((d) => {
+      d.classList.remove("open");
+      d.removeAttribute("open");
+      d.setAttribute("aria-expanded", "false");
+    });
+  }
+}
+
+function toggleMenu(menu) {
+  menu.classList.toggle("open");
+  const expanded = menu.getAttribute("aria-expanded") === "true";
+  menu.setAttribute("aria-expanded", expanded ? "false" : "true");
+  menu.hasAttribute("open")
+    ? menu.removeAttribute("open")
+    : menu.setAttribute("open", "");
+
+  const dropdownToggle = menu.querySelector(".dropdown-toggle");
+  const dropdownExpanded = dropdownToggle.getAttribute("aria-expanded");
+  dropdownToggle.classList.toggle("hidden");
+  dropdownToggle.setAttribute(
+    "aria-expanded",
+    dropdownExpanded === "true" ? "false" : "true"
+  );
+}
+
+function closeMenu(menu) {
+  // console.log("closing", menu);
+  menu.classList.remove("open");
+  menu.removeAttribute("open");
+  menu.setAttribute("aria-expanded", "false");
+  const dropdownToggles = menu.querySelectorAll(".dropdown-toggle");
+  dropdownToggles.forEach((toggle) => {
+    toggle.classList.add("hidden");
+    toggle.setAttribute("aria-expanded", "false");
+  });
+}
+
+function handleCloseOnClick() {
+  const navMenuItems = document.querySelector(".astronav-items");
+  const navToggle = document.getElementById("astronav-menu");
+  const navLink = navMenuItems && navMenuItems.querySelectorAll("a");
+
+  const MenuIcons = navToggle.querySelectorAll(".astronav-toggle");
+
+  navLink &&
+    navLink.forEach((item) => {
+      item.addEventListener("click", () => {
+        navMenuItems?.classList.add("hidden");
+        MenuIcons.forEach((el) => {
+          el.classList.toggle("hidden");
+        });
+      });
+    });
+}
+})();</script> <div> <div class="hidden lg:flex items-center gap-4"> <a href="/Aws_Triada_S3.github.io/contact" class="rounded-sm text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-black text-white hover:bg-gray-800  border-2 border-transparent">Solicitar Info </a> </div> </div> </header>  </div> <div class="max-w-(--breakpoint-xl) mx-auto px-5"> <div class="mt-16 text-center"> <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight"> Sobre Nosotras </h1> <p class="text-lg mt-4 text-slate-600"> El poder de la intersección: Datos, Procesos y Diseño. </p> </div><div class="flex flex-col gap-16 mt-16 pb-20" data-astro-cid-kh7btl4r><div class="max-w-4xl mx-auto text-center" data-astro-cid-kh7btl4r><p class="text-lg leading-relaxed text-slate-600" data-astro-cid-kh7btl4r>
+En <strong data-astro-cid-kh7btl4r>TRIAD</strong>, no creemos en las soluciones aisladas. Creemos que la verdadera ventaja competitiva nace donde los datos se encuentran con la eficiencia operativa y una experiencia de usuario impecable. Somos tres profesionales unidas por la infraestructura de <strong data-astro-cid-kh7btl4r>AWS</strong> para transformar la complejidad técnica en claridad estratégica.
+</p></div><div class="grid md:grid-cols-3 gap-10" data-astro-cid-kh7btl4r><div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:border-rose-200 hover:shadow-xl transition-all text-center flex flex-col items-center" data-astro-cid-kh7btl4r><div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-rose-50 transition-colors" data-astro-cid-kh7btl4r><svg width="1em" height="1em" class="w-10 h-10 text-slate-300 group-hover:text-rose-400" data-astro-cid-kh7btl4r="true" data-icon="bx:bxs-user">   <symbol id="ai:bx:bxs-user" viewBox="0 0 24 24"><path d="M7.5 6.5C7.5 8.981 9.519 11 12 11s4.5-2.019 4.5-4.5S14.481 2 12 2S7.5 4.019 7.5 6.5zM20 21h1v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h17z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-user"></use>  </svg></div><h3 class="text-xl font-bold text-slate-800" data-astro-cid-kh7btl4r>Nieves Pérez</h3><p class="triad-gradient-text text-sm font-bold mb-4" data-astro-cid-kh7btl4r>Strategy &amp; Business Intelligence Lead</p><p class="text-slate-500 text-sm leading-relaxed mb-6 flex-1" data-astro-cid-kh7btl4r>Especialista en unir la operativa de negocio con analítica avanzada. Experta en KPIs de Retail y toma de decisiones estratégicas basadas en evidencias.</p><a href="https://www.linkedin.com/in/nievesperezalonso" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-400 hover:text-[#0077b5] transition-colors font-medium text-sm" data-astro-cid-kh7btl4r><svg width="1em" height="1em" class="w-6 h-6" data-astro-cid-kh7btl4r="true" data-icon="bx:bxl-linkedin-square">   <symbol id="ai:bx:bxl-linkedin-square" viewBox="0 0 24 24"><path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM8.339 18.337H5.667v-8.59h2.672v8.59zM7.003 8.574a1.548 1.548 0 1 1 0-3.096a1.548 1.548 0 0 1 0 3.096zm11.335 9.763h-2.669V14.16c0-.996-.018-2.277-1.388-2.277c-1.39 0-1.601 1.086-1.601 2.207v4.248h-2.667v-8.59h2.56v1.174h.037c.355-.675 1.227-1.387 2.524-1.387c2.704 0 3.203 1.778 3.203 4.092v4.71z" fill="currentColor"/></symbol><use href="#ai:bx:bxl-linkedin-square"></use>  </svg><span data-astro-cid-kh7btl4r>Ver Perfil Profesional</span></a></div><div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:border-rose-200 hover:shadow-xl transition-all text-center flex flex-col items-center" data-astro-cid-kh7btl4r><div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-rose-50 transition-colors" data-astro-cid-kh7btl4r><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-10 h-10 text-slate-300 group-hover:text-rose-400" data-astro-cid-kh7btl4r="true" data-icon="bx:bxs-user">   <use href="#ai:bx:bxs-user"></use>  </svg></div><h3 class="text-xl font-bold text-slate-800" data-astro-cid-kh7btl4r>Mayka Durán</h3><p class="triad-gradient-text text-sm font-bold mb-4" data-astro-cid-kh7btl4r>Operations &amp; Data Analyst Lead</p><p class="text-slate-500 text-sm leading-relaxed mb-6 flex-1" data-astro-cid-kh7btl4r>Arquitecta de eficiencia operativa. Utiliza Python y SQL para limpiar y automatizar flujos de datos, eliminando fricciones en el escalado de negocios.</p><a href="https://www.linkedin.com/in/mdelcarmenduran/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-400 hover:text-[#0077b5] transition-colors font-medium text-sm" data-astro-cid-kh7btl4r><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6" data-astro-cid-kh7btl4r="true" data-icon="bx:bxl-linkedin-square">   <use href="#ai:bx:bxl-linkedin-square"></use>  </svg><span data-astro-cid-kh7btl4r>Ver Perfil Profesional</span></a></div><div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:border-rose-200 hover:shadow-xl transition-all text-center flex flex-col items-center" data-astro-cid-kh7btl4r><div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-rose-50 transition-colors" data-astro-cid-kh7btl4r><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-10 h-10 text-slate-300 group-hover:text-rose-400" data-astro-cid-kh7btl4r="true" data-icon="bx:bxs-user">   <use href="#ai:bx:bxs-user"></use>  </svg></div><h3 class="text-xl font-bold text-slate-800" data-astro-cid-kh7btl4r>Laura Parejo</h3><p class="triad-gradient-text text-sm font-bold mb-4" data-astro-cid-kh7btl4r>Senior Product &amp; UX Lead</p><p class="text-slate-500 text-sm leading-relaxed mb-6 flex-1" data-astro-cid-kh7btl4r>Más de 10 años diseñando productos digitales globales. Transforma la complejidad técnica en interfaces intuitivas que maximizan la conversión.</p><a href="https://www.linkedin.com/in/laura-parejo-aranda" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-400 hover:text-[#0077b5] transition-colors font-medium text-sm" data-astro-cid-kh7btl4r><svg width="1em" height="1em" viewBox="0 0 24 24" class="w-6 h-6" data-astro-cid-kh7btl4r="true" data-icon="bx:bxl-linkedin-square">   <use href="#ai:bx:bxl-linkedin-square"></use>  </svg><span data-astro-cid-kh7btl4r>Ver Perfil Profesional</span></a></div></div><div class="mt-8 py-12 border-t border-slate-100 text-center" data-astro-cid-kh7btl4r><h2 class="text-3xl font-bold text-slate-800" data-astro-cid-kh7btl4r>¿Por qué TRIAD?</h2><p class="max-w-2xl mx-auto mt-4 text-slate-600" data-astro-cid-kh7btl4r>
+Nuestra fuerza reside en la complementariedad. Mientras <strong data-astro-cid-kh7btl4r>Mayka</strong> asegura que los datos fluyan, <strong data-astro-cid-kh7btl4r>Nieves</strong> extrae la inteligencia de negocio y <strong data-astro-cid-kh7btl4r>Laura</strong> los convierte en una herramienta intuitiva. Todo bajo el ecosistema escalable de <strong data-astro-cid-kh7btl4r>AWS</strong>.
+</p><div class="mt-8" data-astro-cid-kh7btl4r><a href="/Aws_Triada_S3.github.io/contact" class="bg-slate-900 text-white px-8 py-3 rounded-lg hover:bg-rose-400 transition-colors" data-astro-cid-kh7btl4r>
+¿Hablamos de tu proyecto?
+</a></div></div><section class="mt-10 py-10 px-6 bg-orange-50/30 rounded-2xl border-2 border-dashed border-orange-100" data-astro-cid-kh7btl4r><div class="max-w-3xl mx-auto text-center" data-astro-cid-kh7btl4r><h4 class="text-xs font-bold uppercase tracking-widest triad-gradient-text mb-4" data-astro-cid-kh7btl4r>Proyecto Académico</h4><p class="text-sm text-slate-600 leading-relaxed italic mb-4" data-astro-cid-kh7btl4r>
+Esta página web es <strong data-astro-cid-kh7btl4r>totalmente ficticia</strong> y ha sido realizada como parte de un trabajo grupal para nuestra formación en <strong data-astro-cid-kh7btl4r>AWS re/Start</strong>, impartida por <strong data-astro-cid-kh7btl4r>Adalab</strong> y la <strong data-astro-cid-kh7btl4r>Fundación Nous Cims</strong>.
+</p><div class="mt-6 p-6 bg-white/80 rounded-xl shadow-sm border border-white" data-astro-cid-kh7btl4r><p class="text-sm text-slate-700 leading-relaxed" data-astro-cid-kh7btl4r>
+El objetivo técnico es demostrar nuestra capacidad para <strong data-astro-cid-kh7btl4r>desplegar una web estática en un bucket de Amazon S3</strong>. Nuestra profesora nos dijo que <strong data-astro-cid-kh7btl4r>"el límite es el cielo"</strong>. Como analistas de datos sin conocimientos previos de programación web, decidimos no conformarnos con lo básico. Hemos querido desafiar nuestros propios límites aprendiendo <strong data-astro-cid-kh7btl4r>Astro</strong> para construir este sitio, demostrando que con curiosidad y la infraestructura de AWS, nosotras también podemos <strong data-astro-cid-kh7btl4r>tocar ese cielo</strong>.
+</p></div></div></section></div> </div> <footer class="my-20"> <p class="text-center text-sm text-slate-500">
+Copyright © 2026 Astroship. All rights reserved.
+</p> <!--
+    Can we ask you a favor 🙏
+    Please keep this backlink on your website if possible.
+    or Purchase a commercial license from https://web3templates.com
+  --> <p class="text-center text-xs text-slate-500 mt-1">
+Made by <a href="https://web3templates.com" target="_blank" rel="noopener" class="hover:underline">
+Web3Templates
+</a> </p> </footer>  </body> </html>

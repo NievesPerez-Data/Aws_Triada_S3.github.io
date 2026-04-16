@@ -1,0 +1,204 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.18.1"><!-- <link rel="preload" as="image" href={src} alt="Hero" /> --><title>TRIAD | Data, Strategy & Product | Astroship</title><link rel="canonical" href="https://nievesp-rez-datos.github.io/Aws_Triada_S3.github.io"><meta name="description" content="Astroship is a starter website template for Astro built with TailwindCSS."><meta name="robots" content="index, follow"><meta property="og:title" content="Astroship - Starter Template for Astro"><meta property="og:type" content="website"><meta property="og:image" content="https://nievesp-rez-datos.github.io/opengraph.jpg"><meta property="og:url" content="https://nievesp-rez-datos.github.io/Aws_Triada_S3.github.io"><meta property="og:image:url" content="https://nievesp-rez-datos.github.io/opengraph.jpg"><meta property="og:image:alt" content="Astroship Homepage Screenshot"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@web3templates"><meta name="twitter:creator" content="@surjithctly"><style>.triad-gradient-text[data-astro-cid-bdzcptip]{background:linear-gradient(135deg,#ffdab9,#f4a460,#f08080 60%,#e6e6fa);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}.triad-gradient-icon[data-astro-cid-bdzcptip]{fill:url(#triadGradient)}.triad-gradient-text[data-astro-cid-j7pv25f6]{background:linear-gradient(135deg,#ffdab9,#f4a460,#f08080 60%,#e6e6fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block}
+</style>
+<link rel="stylesheet" href="/Aws_Triada_S3.github.io/_astro/about.DsvABq19.css"></head> <body> <div class="max-w-(--breakpoint-xl) mx-auto px-5">  <header class="flex flex-col lg:flex-row justify-between items-center my-5">  <div class="flex w-full lg:w-auto items-center justify-between"> <a href="/Aws_Triada_S3.github.io/" class="text-lg"> <span class="font-bold text-slate-800 text-2xl tracking-tighter">TRIAD</span> <span class="text-indigo-600 text-2xl font-bold">.</span> </a> <div class="block lg:hidden"> <button id="astronav-menu" aria-label="Toggle Menu">  <svg fill="currentColor" class="w-4 h-4 text-gray-800" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <title>Toggle Menu</title> <path class="astronav-close-icon astronav-toggle hidden" fill-rule="evenodd" clip-rule="evenodd" d="M18.278 16.864a1 1 0 01-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 01-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 011.414-1.414l4.829 4.828 4.828-4.828a1 1 0 111.414 1.414l-4.828 4.829 4.828 4.828z"></path> <path class="astronav-open-icon astronav-toggle" fill-rule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z"></path> </svg>  </button> </div> </div> <nav class="astronav-items astronav-toggle hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">  <ul class="flex flex-col lg:flex-row lg:gap-3"> <li> <a href="/Aws_Triada_S3.github.io/" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Servicios</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/pricing" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Productos</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/about" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Sobre Nosotras</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/contact" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> Contacto</span> </a> </li><li> <a href="/Aws_Triada_S3.github.io/proyecto" class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-gray-900"> <span> El Proyecto</span> </a> </li> </ul>  </nav>  <script>(function(){const closeOnClick = false;
+
+["DOMContentLoaded", "astro:after-swap"].forEach((event) => {
+  document.addEventListener(event, addListeners);
+});
+
+// Function to clone and replace elements
+function cloneAndReplace(element) {
+  const clone = element.cloneNode(true);
+  element.parentNode.replaceChild(clone, element);
+}
+
+function addListeners() {
+  // Clean up existing listeners
+  const oldMenuButton = document.getElementById("astronav-menu");
+  if (oldMenuButton) {
+    cloneAndReplace(oldMenuButton);
+  }
+
+  const oldDropdownMenus = document.querySelectorAll(".astronav-dropdown");
+  oldDropdownMenus.forEach((menu) => {
+    cloneAndReplace(menu);
+  });
+
+  // Mobile nav toggle
+  const menuButton = document.getElementById("astronav-menu");
+  menuButton && menuButton.addEventListener("click", toggleMobileNav);
+
+  // Dropdown menus
+  const dropdownMenus = document.querySelectorAll(".astronav-dropdown");
+  dropdownMenus.forEach((menu) => {
+    const button = menu.querySelector("button");
+    button &&
+      button.addEventListener("click", (event) =>
+        toggleDropdownMenu(event, menu, dropdownMenus)
+      );
+
+    // Handle Submenu Dropdowns
+    const dropDownSubmenus = menu.querySelectorAll(
+      ".astronav-dropdown-submenu"
+    );
+
+    dropDownSubmenus.forEach((submenu) => {
+      const submenuButton = submenu.querySelector("button");
+      submenuButton &&
+        submenuButton.addEventListener("click", (event) => {
+          event.stopImmediatePropagation();
+          toggleSubmenuDropdown(event, submenu);
+        });
+    });
+  });
+
+  // Clicking away from dropdown will remove the dropdown class
+  document.addEventListener("click", closeAllDropdowns);
+
+  if (closeOnClick) {
+    handleCloseOnClick();
+  }
+}
+
+function toggleMobileNav() {
+  [...document.querySelectorAll(".astronav-toggle")].forEach((el) => {
+    el.classList.toggle("hidden");
+  });
+}
+
+function toggleDropdownMenu(event, menu, dropdownMenus) {
+  toggleMenu(menu);
+
+  // Close one dropdown when selecting another
+  Array.from(dropdownMenus)
+    .filter((el) => el !== menu && !menu.contains(el))
+    .forEach(closeMenu);
+
+  event.stopPropagation();
+}
+
+function toggleSubmenuDropdown(event, submenu) {
+  event.stopPropagation();
+  toggleMenu(submenu);
+
+  // Close sibling submenus at the same nesting level
+  const siblingSubmenus = submenu
+    .closest(".astronav-dropdown")
+    .querySelectorAll(".astronav-dropdown-submenu");
+  Array.from(siblingSubmenus)
+    .filter((el) => el !== submenu && !submenu.contains(el))
+    .forEach(closeMenu);
+}
+
+function closeAllDropdowns(event) {
+  const dropdownMenus = document.querySelectorAll(".dropdown-toggle");
+  const dropdownParent = document.querySelectorAll(
+    ".astronav-dropdown, .astronav-dropdown-submenu"
+  );
+  const isButtonInsideDropdown = [
+    ...document.querySelectorAll(
+      `.astronav-dropdown button, .astronav-dropdown label, .astronav-dropdown input,
+	  .astronav-dropdown-submenu button, .astronav-dropdown-submenu label, .astronav-dropdown-submenu input,
+	  #astronav-menu`
+    ),
+  ].some((button) => button.contains(event.target));
+  if (!isButtonInsideDropdown) {
+    dropdownMenus.forEach((d) => {
+      // console.log("I ran", d);
+      // if (!d.contains(event.target)) {
+      d.classList.remove("open");
+      d.removeAttribute("open");
+      d.classList.add("hidden");
+      // }
+    });
+    dropdownParent.forEach((d) => {
+      d.classList.remove("open");
+      d.removeAttribute("open");
+      d.setAttribute("aria-expanded", "false");
+    });
+  }
+}
+
+function toggleMenu(menu) {
+  menu.classList.toggle("open");
+  const expanded = menu.getAttribute("aria-expanded") === "true";
+  menu.setAttribute("aria-expanded", expanded ? "false" : "true");
+  menu.hasAttribute("open")
+    ? menu.removeAttribute("open")
+    : menu.setAttribute("open", "");
+
+  const dropdownToggle = menu.querySelector(".dropdown-toggle");
+  const dropdownExpanded = dropdownToggle.getAttribute("aria-expanded");
+  dropdownToggle.classList.toggle("hidden");
+  dropdownToggle.setAttribute(
+    "aria-expanded",
+    dropdownExpanded === "true" ? "false" : "true"
+  );
+}
+
+function closeMenu(menu) {
+  // console.log("closing", menu);
+  menu.classList.remove("open");
+  menu.removeAttribute("open");
+  menu.setAttribute("aria-expanded", "false");
+  const dropdownToggles = menu.querySelectorAll(".dropdown-toggle");
+  dropdownToggles.forEach((toggle) => {
+    toggle.classList.add("hidden");
+    toggle.setAttribute("aria-expanded", "false");
+  });
+}
+
+function handleCloseOnClick() {
+  const navMenuItems = document.querySelector(".astronav-items");
+  const navToggle = document.getElementById("astronav-menu");
+  const navLink = navMenuItems && navMenuItems.querySelectorAll("a");
+
+  const MenuIcons = navToggle.querySelectorAll(".astronav-toggle");
+
+  navLink &&
+    navLink.forEach((item) => {
+      item.addEventListener("click", () => {
+        navMenuItems?.classList.add("hidden");
+        MenuIcons.forEach((el) => {
+          el.classList.toggle("hidden");
+        });
+      });
+    });
+}
+})();</script> <div> <div class="hidden lg:flex items-center gap-4"> <a href="/Aws_Triada_S3.github.io/contact" class="rounded-sm text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-black text-white hover:bg-gray-800  border-2 border-transparent">Solicitar Info </a> </div> </div> </header>  </div> <div class="max-w-(--breakpoint-xl) mx-auto px-5"> <main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24"> <div class="py-6 md:order-1 hidden md:block"> <picture> <source srcset="/Aws_Triada_S3.github.io/_astro/logo.CBejzXsT_Zou7rV.webp 200w, /Aws_Triada_S3.github.io/_astro/logo.CBejzXsT_1dPQtF.webp 400w, /Aws_Triada_S3.github.io/_astro/logo.CBejzXsT_Z2e0inE.webp 600w" type="image/webp" sizes="(max-width: 800px) 100vw, 620px">  <img src="/Aws_Triada_S3.github.io/_astro/logo.CBejzXsT_2ouLC3.png" srcset="/Aws_Triada_S3.github.io/_astro/logo.CBejzXsT_1iH6cs.png 200w, /Aws_Triada_S3.github.io/_astro/logo.CBejzXsT_Z2993ER.png 400w, /Aws_Triada_S3.github.io/_astro/logo.CBejzXsT_ZvN4Ig.png 600w" alt="TRIAD Cloud &#38; Data Intelligence" sizes="(max-width: 800px) 100vw, 620px" loading="eager" decoding="async" fetchpriority="auto" width="1024" height="1024"> </picture> </div> <div> <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+Estrategia, Datos y Diseño en la Nube
+</h1> <p class="text-lg mt-4 text-slate-600 max-w-xl">
+En <strong>TRIAD</strong>, fusionamos la analítica avanzada, la optimización de procesos y el diseño de producto. Ayudamos a transformar KPIs complejos en decisiones estratégicas y experiencias digitales escalables bajo infraestructura AWS.
+</p> <div class="mt-6 flex flex-col sm:flex-row gap-3"> <a href="#servicios" rel="noopener" class="rounded-sm text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-black text-white hover:bg-gray-800  border-2 border-transparent flex gap-1 items-center justify-center"> <svg width="1em" height="1em" class="text-white w-5 h-5" data-icon="bx:bxs-zap">   <symbol id="ai:bx:bxs-zap" viewBox="0 0 24 24"><path d="M20.98 11.802a.995.995 0 0 0-.738-.771l-6.86-1.716l2.537-5.921a.998.998 0 0 0-.317-1.192a.996.996 0 0 0-1.234.024l-11 9a1 1 0 0 0 .39 1.744l6.719 1.681l-3.345 5.854A1.001 1.001 0 0 0 8 22a.995.995 0 0 0 .6-.2l12-9a1 1 0 0 0 .38-.998z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-zap"></use>  </svg>
+Nuestros Servicios
+ </a> <a href="#equipo" rel="noopener" class="rounded-sm text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-white border-2 border-black hover:bg-gray-100 text-black  flex gap-1 items-center justify-center"> <svg width="1em" height="1em" class="text-black w-4 h-4" data-icon="bx:bxs-user-detail">   <symbol id="ai:bx:bxs-user-detail" viewBox="0 0 24 24"><path d="M15 11h7v2h-7zm1 4h6v2h-6zm-2-8h8v2h-8zM4 19h10v-1c0-2.757-2.243-5-5-5H7c-2.757 0-5 2.243-5 5v1h2zm4-7c1.995 0 3.5-1.505 3.5-3.5S9.995 5 8 5S4.5 6.505 4.5 8.5S6.005 12 8 12z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-user-detail"></use>  </svg>
+Conoce al Equipo
+ </a> </div> </div> </main><div class="mt-24"> <h2 class="text-center text-slate-500 font-medium uppercase tracking-wider text-sm">Nuestro Stack Tecnológico & Partners</h2> <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap"> <svg width="1em" height="1em" class="size-12 md:size-16 text-slate-400 hover:text-orange-500 transition" data-icon="bx:bxl-aws"> <title>AWS Infrastructure</title>  <symbol id="ai:bx:bxl-aws" viewBox="0 0 24 24"><path d="M18.75 11.35a4.32 4.32 0 0 1-.79-.08a3.9 3.9 0 0 1-.73-.23l-.17-.04h-.12q-.15 0-.15.21v.33a.43.43 0 0 0 0 .19a.5.5 0 0 0 .21.19a3 3 0 0 0 .76.26a4.38 4.38 0 0 0 1 .12a3 3 0 0 0 1-.14a1.94 1.94 0 0 0 .73-.37a1.81 1.81 0 0 0 .49-.58a1.79 1.79 0 0 0 .17-.78a1.54 1.54 0 0 0-.3-.93a2.15 2.15 0 0 0-1-.64l-.95-.3a2 2 0 0 1-.73-.36a.65.65 0 0 1-.2-.47a.66.66 0 0 1 .31-.6a1.82 1.82 0 0 1 .89-.18a2.89 2.89 0 0 1 1.27.26a.79.79 0 0 0 .26.08c.1 0 .15-.08.15-.22v-.36a.38.38 0 0 0-.06-.22a.56.56 0 0 0-.2-.16a1.55 1.55 0 0 0-.28-.12a3.44 3.44 0 0 0-.38-.11l-.44-.1A3.4 3.4 0 0 0 19 6a2.82 2.82 0 0 0-.83.11a2.19 2.19 0 0 0-.7.35A1.61 1.61 0 0 0 17 7a1.5 1.5 0 0 0-.18.74a1.6 1.6 0 0 0 .33 1a2.08 2.08 0 0 0 1.06.68l1 .3a1.58 1.58 0 0 1 .67.34a.66.66 0 0 1 .18.47a.72.72 0 0 1-.35.63a1.83 1.83 0 0 1-.96.19zM12.94 6.5a.48.48 0 0 0-.13-.26a.37.37 0 0 0-.26-.07H12a.43.43 0 0 0-.26.07a.42.42 0 0 0-.13.26l-1 4.4l-1.14-4.4a.48.48 0 0 0-.14-.26s-.13-.07-.26-.07h-.65c-.11 0-.16.06-.16.17a1.22 1.22 0 0 0 .06.27l1.56 5.14A.61.61 0 0 0 10 12a.45.45 0 0 0 .26.06h.57a.49.49 0 0 0 .27-.06a.57.57 0 0 0 .12-.27l1-4.28l1 4.29a.42.42 0 0 0 .12.26a.4.4 0 0 0 .27.07h.57a.41.41 0 0 0 .25-.07a.44.44 0 0 0 .14-.26l1.61-5.14a.73.73 0 0 0 0-.16a.52.52 0 0 0 0-.11a.15.15 0 0 0-.17-.17h-.62a.45.45 0 0 0-.26.07a.68.68 0 0 0-.13.26L14 11zM5.77 8.63a5.92 5.92 0 0 0-.71-.05a2.42 2.42 0 0 0-1.63.52a1.72 1.72 0 0 0-.6 1.37a1.7 1.7 0 0 0 .49 1.28a1.82 1.82 0 0 0 1.33.48a2.48 2.48 0 0 0 2-.92a3.5 3.5 0 0 0 .2.39a2.34 2.34 0 0 0 .24.31a.26.26 0 0 0 .37 0l.42-.28a.28.28 0 0 0 .13-.2a.27.27 0 0 0 0-.16a3.63 3.63 0 0 1-.21-.47a2 2 0 0 1-.07-.6V8.19a2.2 2.2 0 0 0-.55-1.64A2.42 2.42 0 0 0 5.33 6a3.9 3.9 0 0 0-1 .13a3.9 3.9 0 0 0-.84.3a.47.47 0 0 0-.18.14a.37.37 0 0 0 0 .23v.33c0 .14 0 .2.14.2a.26.26 0 0 0 .11 0l.23-.08A4.32 4.32 0 0 1 4.42 7a3 3 0 0 1 .72-.09a1.5 1.5 0 0 1 1.08.31a1.46 1.46 0 0 1 .31 1.06v.49zm.78.9v.27a2.36 2.36 0 0 1-.07.58a1.06 1.06 0 0 1-.23.43a1.38 1.38 0 0 1-.63.42a2.12 2.12 0 0 1-.68.12a.94.94 0 0 1-.7-.24a.92.92 0 0 1-.24-.71a.92.92 0 0 1 .33-.76a1.52 1.52 0 0 1 1-.27h.62a5.67 5.67 0 0 1 .6.16zM19.76 15a19.68 19.68 0 0 1-7.55 1.54a20 20 0 0 1-9.9-2.62c-.24-.15-.43.1-.22.29A14.68 14.68 0 0 0 12 18a14.4 14.4 0 0 0 8.1-2.47c.34-.31.03-.72-.34-.53z" fill="currentColor"/><path d="M18.38 14.06c-.19.14-.16.33.05.3c.71-.09 2.28-.27 2.56.09s-.31 1.83-.58 2.49c-.08.2.1.28.28.13a3.9 3.9 0 0 0 1.23-3.34a3.94 3.94 0 0 0-3.54.33z" fill="currentColor"/></symbol><use href="#ai:bx:bxl-aws"></use>  </svg> <svg width="1em" height="1em" class="size-12 md:size-16 text-slate-400 hover:text-blue-600 transition" data-icon="bx:bxl-python"> <title>Python Data Analysis</title>  <symbol id="ai:bx:bxl-python" viewBox="0 0 24 24"><path d="M9.585 11.692h4.328s2.432.039 2.432-2.35V5.391S16.714 3 11.936 3C7.362 3 7.647 4.983 7.647 4.983l.006 2.055h4.363v.617H5.92s-2.927-.332-2.927 4.282s2.555 4.45 2.555 4.45h1.524v-2.141s-.083-2.554 2.513-2.554zm-.056-5.74a.784.784 0 1 1 0-1.57a.784.784 0 1 1 0 1.57z" fill="currentColor"/><path d="M18.452 7.532h-1.524v2.141s.083 2.554-2.513 2.554h-4.328s-2.432-.04-2.432 2.35v3.951s-.369 2.391 4.409 2.391c4.573 0 4.288-1.983 4.288-1.983l-.006-2.054h-4.363v-.617h6.097s2.927.332 2.927-4.282s-2.555-4.451-2.555-4.451zm-3.981 10.436a.784.784 0 1 1 0 1.57a.784.784 0 1 1 0-1.57z" fill="currentColor"/></symbol><use href="#ai:bx:bxl-python"></use>  </svg> <svg width="1em" height="1em" class="size-12 md:size-16 text-slate-400 hover:text-indigo-600 transition" data-icon="bx:bxs-data"> <title>SQL Databases</title>  <symbol id="ai:bx:bxs-data" viewBox="0 0 24 24"><path d="M20 6c0-2.168-3.663-4-8-4S4 3.832 4 6v2c0 2.168 3.663 4 8 4s8-1.832 8-4V6zm-8 13c-4.337 0-8-1.832-8-4v3c0 2.168 3.663 4 8 4s8-1.832 8-4v-3c0 2.168-3.663 4-8 4z" fill="currentColor"/><path d="M20 10c0 2.168-3.663 4-8 4s-8-1.832-8-4v3c0 2.168 3.663 4 8 4s8-1.832 8-4v-3z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-data"></use>  </svg> <svg width="1em" height="1em" class="size-12 md:size-14 text-slate-400 hover:text-yellow-500 transition" data-icon="simple-icons:powerbi"> <title>Power BI</title>  <symbol id="ai:simple-icons:powerbi" viewBox="0 0 24 24"><path fill="currentColor" d="M10 12a1 1 0 0 1 1 1v11H4a1 1 0 0 1-1-1V13a1 1 0 0 1 1-1zm-2-.5V7a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v17h-4.5V13a1.5 1.5 0 0 0-1.5-1.5zm5-6V1a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v22a1 1 0 0 1-1 1h-3.5V7A1.5 1.5 0 0 0 15 5.5z"/></symbol><use href="#ai:simple-icons:powerbi"></use>  </svg> <svg width="1em" height="1em" class="size-12 md:size-16 text-slate-400 hover:text-green-600 transition" data-icon="bx:bxs-bar-chart-alt-2"> <title>Business Intelligence Strategy</title>  <symbol id="ai:bx:bxs-bar-chart-alt-2" viewBox="0 0 24 24"><path d="M6 21H3a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1zm7 0h-3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v17a1 1 0 0 1-1 1zm7 0h-3a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-bar-chart-alt-2"></use>  </svg> </div> </div><section id="servicios" class="scroll-mt-24 py-16" data-astro-cid-j7pv25f6><div class="mt-16 text-center"> <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight"> Nuestros Servicios </h1> <p class="text-lg mt-4 text-slate-600"> 
+Soluciones integrales que unen la analítica avanzada con el diseño de producto escalable.
+ </p> </div><div class="max-w-6xl mx-auto px-4 relative" data-astro-cid-bdzcptip>    <svg width="0" height="0" class="absolute" data-astro-cid-bdzcptip> <defs data-astro-cid-bdzcptip> <linearGradient id="triadGradient" x1="0%" y1="0%" x2="100%" y2="100%" data-astro-cid-bdzcptip> <stop offset="0%" style="stop-color:#FFDAB9;stop-opacity:1" data-astro-cid-bdzcptip></stop> <stop offset="30%" style="stop-color:#F4A460;stop-opacity:1" data-astro-cid-bdzcptip></stop> <stop offset="60%" style="stop-color:#F08080;stop-opacity:1" data-astro-cid-bdzcptip></stop> <stop offset="100%" style="stop-color:#E6E6FA;stop-opacity:1" data-astro-cid-bdzcptip></stop> </linearGradient> </defs> </svg> <div class="mt-16 text-center" data-astro-cid-bdzcptip> <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight" data-astro-cid-bdzcptip>
+Experiencia 360°: <span class="triad-gradient-text" data-astro-cid-bdzcptip>De los datos a la estrategia</span> </h2> <p class="text-lg mt-4 text-slate-600 max-w-2xl mx-auto" data-astro-cid-bdzcptip>
+Unimos analítica avanzada, optimización operativa y diseño de producto bajo la potencia de AWS.
+</p> </div> <div class="grid sm:grid-cols-2 lg:grid-cols-3 mt-16 gap-8" data-astro-cid-bdzcptip> <div class="flex flex-col items-center text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-xl transition-all duration-300 group" data-astro-cid-bdzcptip>  <div class="bg-slate-50 rounded-xl p-3 w-14 h-14 flex items-center justify-center group-hover:bg-slate-100 transition-colors duration-300 border border-slate-100" data-astro-cid-bdzcptip>  <svg width="1em" height="1em" class="triad-gradient-icon w-8 h-8 group-hover:scale-110 transition-transform duration-300" data-astro-cid-bdzcptip="true" data-icon="bx:bxs-pie-chart-alt-2">   <symbol id="ai:bx:bxs-pie-chart-alt-2" viewBox="0 0 24 24"><path d="M13 2.051V11h8.949c-.47-4.717-4.232-8.479-8.949-8.949zm4.969 17.953c2.189-1.637 3.694-4.14 3.98-7.004h-8.183l4.203 7.004z" fill="currentColor"/><path d="M11 12V2.051C5.954 2.555 2 6.824 2 12c0 5.514 4.486 10 10 10a9.93 9.93 0 0 0 4.255-.964s-5.253-8.915-5.254-9.031A.02.02 0 0 0 11 12z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-pie-chart-alt-2"></use>  </svg> </div> <h3 class="font-bold text-xl mt-6 text-slate-900" data-astro-cid-bdzcptip>Análisis Estratégico</h3> <p class="text-slate-500 mt-3 leading-relaxed text-sm" data-astro-cid-bdzcptip> Transformamos KPIs complejos en decisiones comerciales. Especialistas en unir la operativa de negocio con analítica de alta precisión. </p> </div><div class="flex flex-col items-center text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-xl transition-all duration-300 group" data-astro-cid-bdzcptip>  <div class="bg-slate-50 rounded-xl p-3 w-14 h-14 flex items-center justify-center group-hover:bg-slate-100 transition-colors duration-300 border border-slate-100" data-astro-cid-bdzcptip>  <svg width="1em" height="1em" class="triad-gradient-icon w-8 h-8 group-hover:scale-110 transition-transform duration-300" data-astro-cid-bdzcptip="true" data-icon="bx:bxs-component">   <symbol id="ai:bx:bxs-component" viewBox="0 0 24 24"><path d="M3.553 18.895l4 2a1.001 1.001 0 0 0 .894 0L12 19.118l3.553 1.776a.99.99 0 0 0 .894.001l4-2c.339-.17.553-.516.553-.895v-5c0-.379-.214-.725-.553-.895L17 10.382V6c0-.379-.214-.725-.553-.895l-4-2a1 1 0 0 0-.895 0l-4 2C7.214 5.275 7 5.621 7 6v4.382l-3.447 1.724A.998.998 0 0 0 3 13v5c0 .379.214.725.553.895zM8 12.118l2.264 1.132l-2.913 1.457l-2.264-1.132L8 12.118zm4-2.5l3-1.5v2.264l-3 1.5V9.618zm6.264 3.632l-2.882 1.441l-2.264-1.132L16 12.118l2.264 1.132zM8 18.882l-.062-.031V16.65L11 15.118v2.264l-3 1.5zm8 0v-2.264l3-1.5v2.264l-3 1.5zM12 5.118l2.264 1.132l-2.882 1.441l-2.264-1.132L12 5.118z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-component"></use>  </svg> </div> <h3 class="font-bold text-xl mt-6 text-slate-900" data-astro-cid-bdzcptip>Optimización de Procesos</h3> <p class="text-slate-500 mt-3 leading-relaxed text-sm" data-astro-cid-bdzcptip> Eliminamos cuellos de botella operativos mediante Python y SQL, garantizando que cada flujo de trabajo sea eficiente y medible. </p> </div><div class="flex flex-col items-center text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-xl transition-all duration-300 group" data-astro-cid-bdzcptip>  <div class="bg-slate-50 rounded-xl p-3 w-14 h-14 flex items-center justify-center group-hover:bg-slate-100 transition-colors duration-300 border border-slate-100" data-astro-cid-bdzcptip>  <svg width="1em" height="1em" class="triad-gradient-icon w-8 h-8 group-hover:scale-110 transition-transform duration-300" data-astro-cid-bdzcptip="true" data-icon="bx:bxs-paint-roll">   <symbol id="ai:bx:bxs-paint-roll" viewBox="0 0 24 24"><path d="M18 2H7c-1.103 0-2 .897-2 2v3c0 1.103.897 2 2 2h11c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2z" fill="currentColor"/><path d="M13 15v-2c0-1.103-.897-2-2-2H4V5c-1.103 0-2 .897-2 2v4c0 1.103.897 2 2 2h7v2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-paint-roll"></use>  </svg> </div> <h3 class="font-bold text-xl mt-6 text-slate-900" data-astro-cid-bdzcptip>Diseño de Producto UX</h3> <p class="text-slate-500 mt-3 leading-relaxed text-sm" data-astro-cid-bdzcptip> Diseñamos experiencias digitales escalables basadas en datos de usuario, asegurando productos intuitivos y de alto impacto. </p> </div><div class="flex flex-col items-center text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-xl transition-all duration-300 group" data-astro-cid-bdzcptip>  <div class="bg-slate-50 rounded-xl p-3 w-14 h-14 flex items-center justify-center group-hover:bg-slate-100 transition-colors duration-300 border border-slate-100" data-astro-cid-bdzcptip>  <svg width="1em" height="1em" viewBox="0 0 24 24" class="triad-gradient-icon w-8 h-8 group-hover:scale-110 transition-transform duration-300" data-astro-cid-bdzcptip="true" data-icon="bx:bxl-aws">   <use href="#ai:bx:bxl-aws"></use>  </svg> </div> <h3 class="font-bold text-xl mt-6 text-slate-900" data-astro-cid-bdzcptip>Arquitectura Cloud AWS</h3> <p class="text-slate-500 mt-3 leading-relaxed text-sm" data-astro-cid-bdzcptip> Implementamos soluciones nativas en la nube bajo estándares de AWS re/Start, aportando seguridad y escalabilidad total. </p> </div><div class="flex flex-col items-center text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-xl transition-all duration-300 group" data-astro-cid-bdzcptip>  <div class="bg-slate-50 rounded-xl p-3 w-14 h-14 flex items-center justify-center group-hover:bg-slate-100 transition-colors duration-300 border border-slate-100" data-astro-cid-bdzcptip>  <svg width="1em" height="1em" viewBox="0 0 24 24" class="triad-gradient-icon w-8 h-8 group-hover:scale-110 transition-transform duration-300" data-astro-cid-bdzcptip="true" data-icon="bx:bxs-data">   <use href="#ai:bx:bxs-data"></use>  </svg> </div> <h3 class="font-bold text-xl mt-6 text-slate-900" data-astro-cid-bdzcptip>Business Intelligence</h3> <p class="text-slate-500 mt-3 leading-relaxed text-sm" data-astro-cid-bdzcptip> Creación de dashboards avanzados en Tableau y Power BI que permiten visualizar el estado real de tu negocio en tiempo real. </p> </div><div class="flex flex-col items-center text-center p-8 rounded-2xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-xl transition-all duration-300 group" data-astro-cid-bdzcptip>  <div class="bg-slate-50 rounded-xl p-3 w-14 h-14 flex items-center justify-center group-hover:bg-slate-100 transition-colors duration-300 border border-slate-100" data-astro-cid-bdzcptip>  <svg width="1em" height="1em" class="triad-gradient-icon w-8 h-8 group-hover:scale-110 transition-transform duration-300" data-astro-cid-bdzcptip="true" data-icon="bx:bxs-rocket">   <symbol id="ai:bx:bxs-rocket" viewBox="0 0 24 24"><path d="M15.78 15.84S18.64 13 19.61 12c3.07-3 1.54-9.18 1.54-9.18S15 1.29 12 4.36C9.66 6.64 8.14 8.22 8.14 8.22S4.3 7.42 2 9.72L14.25 22c2.3-2.33 1.53-6.16 1.53-6.16zm-1.5-9a2 2 0 0 1 2.83 0a2 2 0 1 1-2.83 0zM3 21a7.81 7.81 0 0 0 5-2l-3-3c-2 1-2 5-2 5z" fill="currentColor"/></symbol><use href="#ai:bx:bxs-rocket"></use>  </svg> </div> <h3 class="font-bold text-xl mt-6 text-slate-900" data-astro-cid-bdzcptip>Estrategia de Conversión</h3> <p class="text-slate-500 mt-3 leading-relaxed text-sm" data-astro-cid-bdzcptip> Auditamos y rediseñamos embudos de venta para maximizar el ROI, uniendo métricas de comportamiento con visión de negocio. </p> </div> </div> </div></section><section id="equipo" class="scroll-mt-24 py-16 border-t border-slate-100" data-astro-cid-j7pv25f6><div class="mt-16 text-center"> <h1 class="text-4xl lg:text-5xl font-bold lg:tracking-tight"> Conoce al Equipo </h1> <p class="text-lg mt-4 text-slate-600"> 
+Tres perfiles expertos unidos por la formación AWS re/Start para transformar tu negocio.
+ </p> </div><div class="grid md:grid-cols-3 gap-10 mt-12" data-astro-cid-j7pv25f6><div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl hover:shadow-md transition-shadow" data-astro-cid-j7pv25f6><h3 class="font-bold text-xl text-slate-900" data-astro-cid-j7pv25f6>Nieves Pérez</h3><p class="triad-gradient-text font-bold text-sm mb-4" data-astro-cid-j7pv25f6>Business Intelligence & Strategy</p><p class="text-slate-600 text-sm leading-relaxed" data-astro-cid-j7pv25f6>
+Especialista en unir la operativa de negocio con analítica avanzada. Experta en KPIs de Retail y toma de decisiones estratégicas basadas en evidencias.
+</p></div><div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl hover:shadow-md transition-shadow" data-astro-cid-j7pv25f6><h3 class="font-bold text-xl text-slate-900" data-astro-cid-j7pv25f6>Mayka Durán</h3><p class="triad-gradient-text font-bold text-sm mb-4" data-astro-cid-j7pv25f6>Data Analyst & Operations</p><p class="text-slate-600 text-sm leading-relaxed" data-astro-cid-j7pv25f6>
+Experta en optimización de procesos y medición de desempeño. Transforma flujos operativos complejos en acciones concretas mediante Python y SQL.
+</p></div><div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl hover:shadow-md transition-shadow" data-astro-cid-j7pv25f6><h3 class="font-bold text-xl text-slate-900" data-astro-cid-j7pv25f6>Laura Parejo</h3><p class="triad-gradient-text font-bold text-sm mb-4" data-astro-cid-j7pv25f6>Senior Product Designer</p><p class="text-slate-600 text-sm leading-relaxed" data-astro-cid-j7pv25f6>
+10 años diseñando productos digitales a escala. Especialista en UX/UI y sistemas de diseño que validan hipótesis y miden el impacto real del producto.
+</p></div></div></section><div class="bg-black p-8 md:px-20 md:py-20 mt-20 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center"> <h2 class="text-white text-4xl md:text-6xl tracking-tight">
+¿Listo para transformar tus datos en decisiones?
+</h2> <p class="text-slate-400 mt-4 text-lg md:text-xl">
+Hablemos sobre cómo optimizar tu operativa, mejorar tu conversión y escalar tu infraestructura en la nube.
+</p> <div class="flex mt-10"> <a href="mailto:tu-email@ejemplo.com" class="rounded-sm text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-5 py-2.5 bg-white text-black   border-2 border-transparent">
+Contacta con TRIAD
+ </a> </div> </div> </div> <footer class="my-20"> <p class="text-center text-sm text-slate-500">
+Copyright © 2026 Astroship. All rights reserved.
+</p> <!--
+    Can we ask you a favor 🙏
+    Please keep this backlink on your website if possible.
+    or Purchase a commercial license from https://web3templates.com
+  --> <p class="text-center text-xs text-slate-500 mt-1">
+Made by <a href="https://web3templates.com" target="_blank" rel="noopener" class="hover:underline">
+Web3Templates
+</a> </p> </footer>  </body> </html>
