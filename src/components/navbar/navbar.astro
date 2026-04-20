@@ -6,7 +6,7 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 const menuitems = [
   {
     title: "Servicios",
-    path: "/Aws_Triada_S3.github.io/",
+    path: "/Aws_Triada_S3.github.io/#servicios",
   },
   {
     title: "Productos",
@@ -21,8 +21,8 @@ const menuitems = [
     path: "/Aws_Triada_S3.github.io/contact",
   },
   {
-  title: "El Proyecto", 
-  path: "/Aws_Triada_S3.github.io/proyecto",
+    title: "El Proyecto",
+    path: "/Aws_Triada_S3.github.io/proyecto",
   },
 ];
 ---
@@ -32,7 +32,9 @@ const menuitems = [
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/Aws_Triada_S3.github.io/" class="text-lg">
-          <span class="font-bold text-slate-800 text-2xl tracking-tighter">TRIAD</span>
+          <span class="font-bold text-slate-800 text-2xl tracking-tighter"
+            >TRIAD</span
+          >
           <span class="text-indigo-600 text-2xl font-bold">.</span>
         </a>
         <div class="block lg:hidden">
@@ -57,7 +59,9 @@ const menuitems = [
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        <Link href="/Aws_Triada_S3.github.io/contact" size="md">Solicitar Info</Link>
+        <Link href="/Aws_Triada_S3.github.io/contact" size="md"
+          >Solicitar Info</Link
+        >
       </div>
     </div>
   </header>
