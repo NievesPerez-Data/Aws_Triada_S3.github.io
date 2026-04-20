@@ -10,82 +10,109 @@ import { Icon } from "astro-icon/components";
     <Sectionhead>
       <Fragment slot="title">El Desafío: Web Estática en la Nube</Fragment>
       <Fragment slot="desc">
-        Este proyecto nace con un objetivo técnico claro: dominar el despliegue profesional de arquitecturas web utilizando Amazon Web Services (AWS).
+        Este proyecto nace con un objetivo técnico claro: dominar el despliegue
+        profesional de arquitecturas web utilizando Amazon Web Services (AWS).
       </Fragment>
     </Sectionhead>
 
     <div class="mt-16 max-w-4xl mx-auto">
-      <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm mb-12">
+      <div
+        class="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm mb-12">
         <div class="flex items-center gap-4 mb-6">
           <div class="bg-rose-400 p-3 rounded-xl text-white">
             <Icon name="bx:bxl-aws" class="size-8" />
           </div>
-          <h2 class="text-2xl font-bold text-slate-800">Objetivo: Despliegue en AWS S3</h2>
+          <h2 class="text-2xl font-bold text-slate-800">
+            Objetivo: Despliegue en AWS S3
+          </h2>
         </div>
         <p class="text-lg text-slate-600 leading-relaxed">
-          La meta principal de <strong>TRIAD</strong> ha sido demostrar la capacidad de orquestar y desplegar una web estática optimizada dentro de un <strong>bucket de Amazon S3</strong>. 
-          Este proceso no solo implica subir archivos, sino configurar permisos, políticas de acceso y garantizar la alta disponibilidad de la infraestructura Cloud.
+          La meta principal de <strong>TRIAD</strong> ha sido demostrar la capacidad
+          de orquestar y desplegar una web estática optimizada dentro de un <strong
+            >bucket de Amazon S3</strong
+          >. Este proceso no solo implica subir archivos, sino configurar
+          permisos, políticas de acceso y garantizar la alta disponibilidad de
+          la infraestructura Cloud.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8">
         <div class="flex gap-4">
-            <div class="shrink-0">
-                <Icon name="bx:bx-cloud-upload" class="size-8 text-rose-400" />
-            </div>
-            <div>
-                <h3 class="font-bold text-slate-800">Infraestructura como Servicio</h3>
-                <p class="text-slate-600 text-sm mt-1">Gestión de almacenamiento de objetos (S3) para servir contenido de alto rendimiento.</p>
-            </div>
+          <div class="shrink-0">
+            <Icon name="bx:bx-cloud-upload" class="size-8 text-rose-400" />
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-800">
+              Infraestructura como Servicio
+            </h3>
+            <p class="text-slate-600 text-sm mt-1">
+              Gestión de almacenamiento de objetos (S3) para servir contenido de
+              alto rendimiento.
+            </p>
+          </div>
         </div>
 
         <div class="flex gap-4">
-            <div class="shrink-0">
-                <Icon name="bx:bx-code-alt" class="size-8 text-rose-400" />
-            </div>
-            <div>
-                <h3 class="font-bold text-slate-800">Arquitectura Astro</h3>
-                <p class="text-slate-600 text-sm mt-1">Uso de frameworks modernos para generar HTML estático eficiente y ligero.</p>
-            </div>
+          <div class="shrink-0">
+            <Icon name="bx:bx-code-alt" class="size-8 text-rose-400" />
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-800">Arquitectura Astro</h3>
+            <p class="text-slate-600 text-sm mt-1">
+              Uso de frameworks modernos para generar HTML estático eficiente y
+              ligero.
+            </p>
+          </div>
         </div>
 
         <div class="flex gap-4">
-            <div class="shrink-0">
-                <Icon name="bx:bx-shield-quarter" class="size-8 text-rose-400" />
-            </div>
-            <div>
-                <h3 class="font-bold text-slate-800">Políticas de Acceso</h3>
-                <p class="text-slate-600 text-sm mt-1">Configuración de seguridad y visibilidad pública mediante AWS IAM y Bucket Policies.</p>
-            </div>
+          <div class="shrink-0">
+            <Icon name="bx:bx-shield-quarter" class="size-8 text-rose-400" />
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-800">Políticas de Acceso</h3>
+            <p class="text-slate-600 text-sm mt-1">
+              Configuración de seguridad y visibilidad pública mediante AWS IAM
+              y Bucket Policies.
+            </p>
+          </div>
         </div>
 
         <div class="flex gap-4">
-            <div class="shrink-0">
-                <Icon name="bx:bx-git-merge" class="size-8 text-rose-400" />
-            </div>
-            <div>
-                <h3 class="font-bold text-slate-800">Integración Continua</h3>
-                <p class="text-slate-600 text-sm mt-1">Despliegue automatizado para asegurar que cada cambio se refleje en la nube al instante.</p>
-            </div>
+          <div class="shrink-0">
+            <Icon name="bx:bx-git-merge" class="size-8 text-rose-400" />
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-800">Integración Continua</h3>
+            <p class="text-slate-600 text-sm mt-1">
+              Despliegue automatizado para asegurar que cada cambio se refleje
+              en la nube al instante.
+            </p>
+          </div>
         </div>
       </div>
 
-     <section class="mt-20">
-        <h2 class="text-center text-2xl font-bold text-slate-800 mb-10">Evidencia del Despliegue</h2>
-        
-        {/* Contenedor del vídeo con el nombre de archivo correcto */}
-        <div class="aspect-video bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border-4 border-rose-400/20">
-  <video 
-    controls 
-    preload="metadata" 
-    class="w-full h-full object-contain bg-black"
-  >
-    <source src="/Workbench_Vocareum_S3_Triad.mp4" type="video/mp4" />
-    Tu navegador no soporta la reproducción de vídeos.
-  </video>
-</div>
+      <section class="mt-20">
+        <h2 class="text-center text-2xl font-bold text-slate-800 mb-10">
+          Evidencia del Despliegue
+        </h2>
+
+        {/* Contenedor del vídeo con embed de Dailymotion */}
+        <div
+          class="aspect-video bg-slate-900 rounded-2xl shadow-2xl overflow-hidden border-4 border-rose-400/20">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.dailymotion.com/embed/video/k6BRNjPSkuKnL8FBVoA"
+            allow="autoplay"
+            allowFullscreen
+            class="w-full h-full"></iframe>
+        </div>
 
         <p class="text-center mt-6 text-slate-500 text-sm font-medium">
-            Demostración en vídeo del entorno de trabajo en AWS S3.
+          Demostración en vídeo del entorno de trabajo en AWS S3.
         </p>
       </section>
+    </div></Container
+  ></Layout
+>
