@@ -6,17 +6,45 @@ import Hero from "@/components/hero.astro";
 import Logos from "@/components/logos.astro";
 import Layout from "@/layouts/Layout.astro";
 import Sectionhead from "@/components/sectionhead.astro";
+import Team from "@/components/team.astro";
+
+const team = [
+  {
+    name: "Nieves Pérez",
+    role: "Strategy & Business Intelligence Lead",
+    desc: "Especialista en unir la operativa de negocio con analítica avanzada. Experta en KPIs de Retail y toma de decisiones estratégicas basadas en evidencias.",
+    linkedin: "https://www.linkedin.com/in/nievesperezalonso",
+  },
+  {
+    name: "Mayka Durán",
+    role: "Operations & Data Analyst Lead",
+    desc: "Arquitecta de eficiencia operativa. Utiliza Python y SQL para limpiar y automatizar flujos de datos, eliminando fricciones en el escalado de negocios.",
+    linkedin: "https://www.linkedin.com/in/mdelcarmenduran/",
+  },
+  {
+    name: "Laura Parejo",
+    role: "Senior Product & UX Lead",
+    desc: "Más de 10 años diseñando productos digitales globales. Transforma la complejidad técnica en interfaces intuitivas que maximizan la conversión.",
+    linkedin: "https://www.linkedin.com/in/laura-parejo-aranda",
+  },
+  {
+    name: "Esther Quirós",
+    role: "FullStack Developer",
+    desc: "Desarrollador FullStack que transforma ideas en aplicaciones web eficientes con React, Node.js y MySQL, aplicando metodologías ágiles.",
+    linkedin: "https://www.linkedin.com/in/esther-quir%C3%B3s/",
+  },
+];
 ---
 
 <style>
   /* Definimos vuestra gama: Melocotón -> Coral -> Lavanda */
   .triad-gradient-text {
     background: linear-gradient(
-      135deg, 
-      #FFDAB9 0%,   /* Melocotón */
-      #F4A460 30%,  /* Arena */
-      #F08080 60%,  /* Coral */
-      #E6E6FA 100%  /* Lavanda */
+      135deg,
+      #ffdab9 0%,
+      /* Melocotón */ #f4a460 30%,
+      /* Arena */ #f08080 60%,
+      /* Coral */ #e6e6fa 100% /* Lavanda */
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -28,14 +56,15 @@ import Sectionhead from "@/components/sectionhead.astro";
 <Layout title="TRIAD | Data, Strategy & Product">
   <Container>
     <Hero />
-    
+
     <Logos />
 
     <section id="servicios" class="scroll-mt-24 py-16">
       <Sectionhead>
         <Fragment slot="title">Nuestros Servicios</Fragment>
         <Fragment slot="desc">
-          Soluciones integrales que unen la analítica avanzada con el diseño de producto escalable.
+          Soluciones integrales que unen la analítica avanzada con el diseño de
+          producto escalable.
         </Fragment>
       </Sectionhead>
       <Features />
@@ -45,37 +74,13 @@ import Sectionhead from "@/components/sectionhead.astro";
       <Sectionhead>
         <Fragment slot="title">Conoce al Equipo</Fragment>
         <Fragment slot="desc">
-          Tres perfiles expertos unidos por la formación AWS re/Start para transformar tu negocio.
+          Cuatro profesionales expertos unidos por la formación AWS re/Start
+          para transformar tu negocio.
         </Fragment>
       </Sectionhead>
 
-      <div class="grid md:grid-cols-3 gap-10 mt-12">
-        {/* Nieves Pérez */}
-        <div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl hover:shadow-md transition-shadow">
-          <h3 class="font-bold text-xl text-slate-900">Nieves Pérez</h3>
-          <p class="triad-gradient-text font-bold text-sm mb-4">Business Intelligence & Strategy</p>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Especialista en unir la operativa de negocio con analítica avanzada. Experta en KPIs de Retail y toma de decisiones estratégicas basadas en evidencias.
-          </p>
-        </div>
-
-        {/* Mayka Durán */}
-        <div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl hover:shadow-md transition-shadow">
-          <h3 class="font-bold text-xl text-slate-900">Mayka Durán</h3>
-          <p class="triad-gradient-text font-bold text-sm mb-4">Data Analyst & Operations</p>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Experta en optimización de procesos y medición de desempeño. Transforma flujos operativos complejos en acciones concretas mediante Python y SQL.
-          </p>
-        </div>
-
-        {/* Laura Parejo */}
-        <div class="flex flex-col items-center text-center p-6 bg-slate-50 rounded-2xl hover:shadow-md transition-shadow">
-          <h3 class="font-bold text-xl text-slate-900">Laura Parejo</h3>
-          <p class="triad-gradient-text font-bold text-sm mb-4">Senior Product Designer</p>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            10 años diseñando productos digitales a escala. Especialista en UX/UI y sistemas de diseño que validan hipótesis y miden el impacto real del producto.
-          </p>
-        </div>
+      <div class="mt-12">
+        <Team team={team} columns="4" />
       </div>
     </section>
 

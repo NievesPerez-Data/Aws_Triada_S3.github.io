@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface TeamMember {
+  name: string;
+  role: string;
+  desc: string;
+  linkedin: string;
+}
+
+interface Props {
+  team: TeamMember[];
+  columns?: "3" | "4";
+}
+
+const { team, columns = "3" } = Astro.props;
+
+const gridClass = columns === "4" ? "md:grid-cols-4" : "md:grid-cols-3";
+---
+
+<style>
+  .triad-gradient-text {
+    background: linear-gradient(
+      135deg,
+      #ffdab9 0%,
+      #f4a460 30%,
+      #f08080 60%,
+      #e6e6fa 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+</style>
+
+<div class={`grid ${gridClass} gap-10`}>
+  {
+    team.map((item) => (
+      <div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:border-rose-200 hover:shadow-xl transition-all text-center flex flex-col items-center">
+        <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-rose-50 transition-colors">
+          <Icon
+            name="bx:bxs-user"
+            class="w-10 h-10 text-slate-300 group-hover:text-rose-400"
+          />
+        </div>
+        <h3 class="text-xl font-bold text-slate-800">{item.name}</h3>
+
+        <p class="triad-gradient-text text-sm font-bold mb-4">{item.role}</p>
+
+        <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-1">
+          {item.desc}
+        </p>
+        <a
+          href={item.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 text-slate-400 hover:text-[#0077b5] transition-colors font-medium text-sm">
+          <Icon name="bx:bxl-linkedin-square" class="w-6 h-6" />
+          <span>Ver Perfil Profesional</span>
+        </a>
+      </div>
+    ))
+  }
+</div>

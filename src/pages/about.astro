@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Container from "../components/container.astro";
 import Sectionhead from "../components/sectionhead.astro";
-import { Icon } from "astro-icon/components";
+import Team from "../components/team.astro";
 
 const team = [
   {
@@ -32,23 +32,6 @@ const team = [
 ];
 ---
 
-<style>
-  /* Clase para el degradado de texto basado en vuestro logo */
-  .triad-gradient-text {
-    background: linear-gradient(
-      135deg,
-      #ffdab9 0%,
-      /* Melocotón */ #f4a460 30%,
-      /* Arena */ #f08080 60%,
-      /* Coral */ #e6e6fa 100% /* Lavanda */
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-  }
-</style>
-
 <Layout title="Sobre Nosotras | TRIAD">
   <Container>
     <Sectionhead>
@@ -70,38 +53,7 @@ const team = [
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-10">
-        {
-          team.map((item) => (
-            <div class="group p-8 rounded-2xl border border-slate-200 bg-white hover:border-rose-200 hover:shadow-xl transition-all text-center flex flex-col items-center">
-              <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6 group-hover:bg-rose-50 transition-colors">
-                <Icon
-                  name="bx:bxs-user"
-                  class="w-10 h-10 text-slate-300 group-hover:text-rose-400"
-                />
-              </div>
-              <h3 class="text-xl font-bold text-slate-800">{item.name}</h3>
-
-              {/* Aplicamos el degradado al Rol */}
-              <p class="triad-gradient-text text-sm font-bold mb-4">
-                {item.role}
-              </p>
-
-              <p class="text-slate-500 text-sm leading-relaxed mb-6 flex-1">
-                {item.desc}
-              </p>
-              <a
-                href={item.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex items-center gap-2 text-slate-400 hover:text-[#0077b5] transition-colors font-medium text-sm">
-                <Icon name="bx:bxl-linkedin-square" class="w-6 h-6" />
-                <span>Ver Perfil Profesional</span>
-              </a>
-            </div>
-          ))
-        }
-      </div>
+      <Team team={team} columns="4" />
 
       <div class="mt-8 py-12 border-t border-slate-100 text-center">
         <h2 class="text-3xl font-bold text-slate-800">¿Por qué TRIAD?</h2>
