@@ -1,166 +1,79 @@
-# Astroship - Astro SAAS Starter Website Template
+# 🚀 TRIAD: Despliegue de Web Estática en AWS
 
-Astroship is a free starter astro website template for saas, startups, marketing websites, landing pages & blogs. Built with Astro & TailwindCSS.
+Este proyecto nace con un objetivo técnico claro: **dominar el despliegue profesional de arquitecturas web utilizando Amazon Web Services (AWS)**. A través de este repositorio, se documenta la transición de un desarrollo local hacia una infraestructura Cloud robusta y escalable.
 
-This Free Template is sponsored by [Web3Templates](https://web3templates.com)
+## 🎯 El Desafío: Web Estática en la Nube
 
-## Live Demo
+La meta principal de **TRIAD** ha sido demostrar la capacidad de orquestar y desplegar una web estática optimizada dentro de un **bucket de Amazon S3**. 
 
-**[https://astroship.web3templates.com/](https://astroship.web3templates.com/)**
+Este proceso no solo implica subir archivos, sino configurar la arquitectura necesaria para un entorno de producción real:
+* **Gestión de Almacenamiento (S3):** Configuración de buckets para servir contenido de alto rendimiento.
+* **Infraestructura y Seguridad:** Configuración de permisos, políticas de acceso (IAM) y visibilidad pública controlada.
+* **Arquitectura Astro:** Uso de frameworks modernos para generar HTML estático eficiente, ligero y veloz.
+* **Integración Continua:** Flujo de trabajo orientado a que cada cambio se refleje en la nube de forma automatizada.
 
-**[Download Astroship Template](https://web3templates.com/templates/astroship-starter-website-template-for-astro)**
+---
 
-## Upgrade to Astroship Pro Version
+## 🏗️ Estructura del Proyecto
 
-**[https://astroship-pro.web3templates.com/](https://astroship-pro.web3templates.com/)**
+Basado en el framework **Astro**, la web se organiza de la siguiente manera para garantizar modularidad y rendimiento:
 
-**[Purchase Astroship Pro — $49](https://web3templates.com/templates/astroship-pro-astro-saas-website-template)**
-
-
-<!-- prettier-ignore -->
-| Feature | Free Version | Pro Version |
-| --- | ------ | --- |
-| Astro v3 | ✅  | ✅ |
-| Content Collections | ✅  | ✅ |
-| Tailwind CSS   | ✅  | ✅ |
-| Mobile Responsive | ✅  | ✅ |
-| Working Contact Page | ✅  | ✅ |
-| Pro Layouts & Features | ❌  | ✅ |
-| Blog with Pagination | ❌ | ✅ |
-| View Transitions | ❌ | ✅ |
-| Advanced Homepage Design | ❌  | ✅ |
-| Features Page | ❌  | ✅ |
-| Integrations Page | ❌  | ✅ |
-| Elegant 404 Page | ❌  | ✅ |
-| 6 Months Support| ❌  | ✅  |
-| Free Updates    | ✅  | ✅  |
-| License         | GPL-2.0 | Commercial |
-| &nbsp; | &nbsp;| &nbsp;|
-| Pricing| Free|**$49**|
-| &nbsp; | [Deploy for free](https://vercel.com/new/surjithctly/clone?demo-description=Starter%20template%20for%20startups%2C%20marketing%20websites%20%26%20blogs%20built%20with%20Astro%20and%20TailwindCSS.&demo-image=%2F%2Fimages.ctfassets.net%2Fe5382hct74si%2F5dB0dDqBr1BfvIoNOmffVB%2F784984a8d3fe5e3db123e7c655166046%2Fastroship_-_Tony_Sullivan.jpg&demo-title=Astroship&demo-url=https%3A%2F%2Fastroship.web3templates.com%2F&from=templates&project-name=Astroship&repository-name=astroship&repository-url=https%3A%2F%2Fgithub.com%2Fsurjithctly%2Fastroship&skippable-integrations=1) | [Purchase Pro](https://web3templates.com/templates/astroship-pro-astro-saas-website-template) |
-
-<a href="https://web3templates.com/templates/astroship-pro-astro-saas-website-template">
-<img width="160" alt="Upgrade to Pro" src="https://user-images.githubusercontent.com/1884712/199181300-37c2128e-d033-4145-a906-16fa5263a53b.png">
-</a>
-
-## Deploy this template
-
-You can instantly clone this to your GitHub and deploy the site by clicking the below buttons to deploy to your chosen providers!
-
-Click here to deploy on Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsurjithctly%2Fastroship&project-name=astroship&repository-name=astroship&demo-title=Astroship%20-%20Astro%20Starter%20Template&demo-description=Astroship%20is%20a%20starter%20template%20for%20startups%2C%20marketing%20websites%20%26%20landing%20pages.%20Built%20with%20Astro%2C%20TailwindCSS&demo-url=https%3A%2F%2Fastroship.web3templates.com%2F&demo-image=https%3A%2F%2Fuser-images.githubusercontent.com%2F1884712%2F200831799-10ef2456-a02e-4068-b580-4b5326f0b33b.png)
-
-Click here to deploy on Netlify:
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/surjithctly/astroship)
-
-## Preview
-
-![image](https://user-images.githubusercontent.com/1884712/200831799-10ef2456-a02e-4068-b580-4b5326f0b33b.png)
-
-
-## Pro Version Preview
-
-![preview](https://github.com/surjithctly/astroship/assets/1884712/25665c02-d2a7-43dc-89b2-34a8ae37ade9)
-
-
-### Pagespeed Score
-
-[![pagespeed](https://user-images.githubusercontent.com/1884712/210250214-7aa98167-7993-4b90-8138-326b8fa0c223.png)](https://pagespeed.web.dev/report?url=https%3A%2F%2Fastroship.web3templates.com%2F)
-
-
-## Installation
-
-If you are reading this on github, you can click on the "Use this template" button above to create a new repository from astroship to your account. Then you can do a `git clone` to clone it to your local system.
-
-Alternatively, you can clone the project directly from this repo to your local system.
-
-### 1. Clone the repo
-
-```bash
-git clone https://github.com/surjithctly/astroship.git myProjectName
-# or
-git clone https://github.com/surjithctly/astroship.git .
-```
-
-The `.` will clone it to the current directory so make sure you are inside your project folder first.
-
-### 2. Install Dependencies
-
-```bash
-npm install
-# or
-yarn install
-# or (recommended)
-pnpm install
-```
-
-### 3. Start development Server
-
-```bash
-npm run dev
-# or
-yarn dev
-# or (recommended)
-pnpm dev
-```
-
-### Preview & Build
-
-```bash
-npm run preview
-npm run build
-# or
-yarn preview
-yarn build
-# or (recommended)
-pnpm preview
-pnpm build
-```
-
-We recommend using [pnpm](https://pnpm.io/) to save disk space on your computer.
-
-### Other Commands
-
-```bash
-pnpm astro ...
-pnpm astro add
-pnpm astro --help
-```
-
-## Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── ...
+```text
 ├── src/
-│   ├── components/
-│   │   └── ...
-│   ├── layouts/
-│   │   └── ...
-│   └── pages/
-│       └── ...
-└── package.json
+│   ├── components/      # Elementos reutilizables (Botones, Cards, Navbar)
+│   ├── layouts/         # Plantillas base de las páginas
+│   ├── pages/           # Rutas y contenido principal de la web
+│   └── styles/          # Archivos de CSS global
+├── public/              # Activos estáticos (Imágenes, fuentes, iconos)
+├── astro.config.mjs     # Configuración central de Astro
+└── package.json         # Dependencias y scripts de construcción
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### 🔍 ¿Qué encontrarás en la web?
+Al explorar la página [TRIAD - Proyecto](https://nievesperez-data.github.io/Aws_Triada_S3.github.io/proyecto/), verás una interfaz diseñada para la claridad técnica:
+1.  **Dashboard de Arquitectura:** Resumen de las herramientas Cloud utilizadas.
+2.  **Secciones de Contenido:** Información desglosada sobre los pilares del proyecto (S3, Políticas, Astro).
+3.  **Optimización:** Una experiencia de usuario fluida gracias al renderizado estático.
 
-Any static assets, like images, can be placed in the `public/` directory.
+---
 
-## TailwindCSS
+## 🛠️ Guía de Desarrollo (Original)
 
-TailwindCSS is already configured in this repo, so you can start using it without any installation.
+> **Nota:** Esta sección conserva la documentación técnica original del fork para el mantenimiento del código.
 
-## Credits
+### Comandos de inicio
 
-[Hero Illustration](https://www.figma.com/community/file/1108400791662599811) by [Streamline](https://www.streamlinehq.com/)
+Astro viene con una interfaz de línea de comandos (CLI) integrada.
 
-## 👀 Want to learn more?
+| Comando | Acción |
+| :--- | :--- |
+| `npm install` | Instala las dependencias necesarias. |
+| `npm run dev` | Inicia el servidor de desarrollo local en `localhost:4321`. |
+| `npm run build` | Genera el sitio estático para producción (en la carpeta `dist/`). |
+| `npm run preview` | Previsualiza la construcción local antes de subir a AWS. |
 
-Feel free to check out [Astro Docs](https://docs.astro.build) or jump into our [Discord Chat](https://web3templates.com/discord).
+---
 
-[![Built with Astro](https://astro.badg.es/v1/built-with-astro.svg)](https://astro.build)
+## 🛡️ Configuración en AWS (Resumen Técnico)
+
+Para replicar este despliegue, se deben considerar los siguientes puntos clave en la consola de AWS:
+1.  **Static Website Hosting:** Habilitado en las propiedades del Bucket.
+2.  **Block Public Access:** Desactivado (solo lo necesario para acceso de lectura).
+3.  **Bucket Policy:**
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "PublicReadGetObject",
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::tu-nombre-de-bucket/*"
+            }
+        ]
+    }
+    ```
+
+---
+✨ *Proyecto creado y desplegado como parte de un desafío de infraestructura Cloud.*
